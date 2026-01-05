@@ -111,9 +111,6 @@ Start-Process .\results\figures\fingerplan_predict_map.html
 ```
 
 ## Notes
-- Some comments are in Danish; preserve intent when refactoring.
 - If external CSVs are needed temporarily, define a configurable variable at the top of the notebook and plan to migrate into `data/processed/`.
 
-## Next Steps
-- Define canonical processed filenames (e.g., cleaned CSV, PCA outputs) to standardize inputs across notebooks.
-- Consider adding unit tests or lightweight checks once scripts are extracted into `py_programs/`.
+

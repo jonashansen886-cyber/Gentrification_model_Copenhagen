@@ -9,3 +9,7 @@ seaborn>=0.12.0
 leafmap
 fiona
 pyogrio
+folium
+rasterio
+shapely
+simpledbf

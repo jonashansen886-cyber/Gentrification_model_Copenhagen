@@ -113,5 +113,54 @@ Start-Process .\results\figures\fingerplan_predict_map.html
 ## Notes
 - If external CSVs are needed temporarily, define a configurable variable at the top of the notebook and plan to migrate into `data/processed/`.
 
-## test 123
+
+## Space-Time Analysis (ArcGIS Pro)
+Generalized batch pipeline for ArcGIS Pro to create Space-Time Cubes, run Emerging Hotspot Analysis, and Time Series Clustering.
+
+- Features: batch CSV processing, organized outputs, JSON-configurable parameters, and simple error handling.
+- Requirements: ArcGIS Pro with Space-Time Pattern Mining tools and `arcpy` (installed with ArcGIS Pro; not a pip package).
+
+### Configure
+Create `sta_config.json` (at the working directory from which you run the script). Example keys:
+
+```
+{
+  "clusters_feature": "clusters_hovedstad",
+  "csv_folder": "data/interim/cph_frb_long",
+  "location_id": "cluster_id",
+  "time_field": "Timedate",
+  "time_step_interval": "1 Years",
+  "cluster_count": 6,
+  "neighborhood_distance": "200 Meters",
+  "neighborhood_time_step": 1,
+  "number_of_neighbors": 5,
+  "output_crs": "PROJCS[...]",
+  "scratch_workspace": null,
+  "workspace": null
+}
+```
+
+Folder conventions for CSVs: place long-format files (e.g., `cluster_<variable>_long.csv`) under `data/interim/<folder>` and set `csv_folder` accordingly in the config.
+
+### Run
+- Script entry: [py_programs/STA_modelbuilder.py](py_programs/STA_modelbuilder.py)
+- Option A (outputs in current folder): run from repo root
+  - `& .\.venv\Scripts\python.exe py_programs\STA_modelbuilder.py`
+- Option B (keep outputs under results/sta): run from a results subfolder
+  - `cd results`
+  - `mkdir sta` (if needed), then `cd sta`
+  - `& ..\..\.venv\Scripts\python.exe ..\..\py_programs\STA_modelbuilder.py`
+
+Outputs created per run:
+- `space_time_cube/` containing NetCDF cubes
+- `emerging_hotspot/` containing EHA feature classes
+- `time_series_cluster/` containing TSC shapefiles and DBF tables
+
+Troubleshooting tips:
+- Ensure `sta_config.json` points to a valid `csv_folder` and that CSVs include `location_id`, `time_field`, and `Value` columns.
+- If joins fail, confirm the feature and CSV ID columns align and share compatible dtypes.
+- `arcpy` must come from the ArcGIS Pro Python environment; do not install via pip.
+
+
+
 

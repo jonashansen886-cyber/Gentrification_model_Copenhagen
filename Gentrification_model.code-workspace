@@ -1,0 +1,18 @@
+  
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "material-icon-theme.activeIconPack": "default",
+    "material-icon-theme.folders.associations": {
+      "results": "dist",
+	  "py_programs": "Python"
+    },
+    "material-icon-theme.files.associations": {
+      "*.metrics.json": "json"
+    }
+  }
+}

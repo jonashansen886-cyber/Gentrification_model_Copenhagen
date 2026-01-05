@@ -1,0 +1,11 @@
+#Python
+/.venv/
+/__pycache__/
+*.pyc
+
+# Data
+/data/
+
+# Backups & System Files
+/.git_backup/
+.DS_Store

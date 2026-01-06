@@ -6,35 +6,22 @@ Notebook-driven Python ML project for analyzing gentrification patterns using XG
 - `data/`
   - `raw/`, `interim/`, `processed/`: datasets across lifecycle stages. Prefer using files in `data/` and avoid hardcoded absolute paths.
 - `notebooks/`
-  - `01_Raster_data_cleaning.ipynb`: prepare and clean data (including raster-derived features).
-  - `02_Machine_Learning_Modell.ipynb`: XGBoost classification; stratified splits, hyperparameter tuning, threshold tuning for class 0, and predictions export.
-  - `03_visualixe_model_training_data.ipynb`: visualize core model predictions over neighborhoods (training/holdout context).
-  - `04_visualize_model_fingerplan.ipynb`: visualize fingerplan predictions over the fingerplan shapefile.
+  - `01_visualize_timeseries_clustering.ipynb`: visualize ArcGIS Time Series Clustering DBF charts and export HTML charts to `results/metrics/charts_html`.
+  - `02_TSC_rasterize_reclassify.ipynb`: rasterize TSC clusters and apply Excel-based reclassification rules; outputs reclassified rasters to `data/processed/tsc_reclass`.
+  - `03_weighted_overlay_analysis.ipynb`: compute weighted overlay, run zonal statistics on clusters, and build an interactive map; outputs to `results/metrics/overlay_output`.
+  - `04_raster_data_cleaning.ipynb`: prepare and clean data (including raster-derived features).
+  - `05_machine_learning_Model.ipynb`: XGBoost classification; stratified splits, hyperparameter tuning, threshold tuning for class 0, and predictions export.
+  - `06_visualixe_model_training_data.ipynb`: visualize core model predictions over neighborhoods (training/holdout context).
+  - `07_visualize_model_fingerplan.ipynb`: visualize fingerplan predictions over the fingerplan shapefile.
   - `OLD_*`: legacy notebooks for reference.
-- `py_programs/`: placeholder for reusable functions/scripts (extract later when workflows stabilize).
+- `py_programs/`: folder for reusable functions/scripts.
 - `.github/copilot-instructions.md`: guidance for AI coding agents.
 - `results/`: outputs from analyses
   - `figures/`: plots and interactive maps (e.g., `prediction_map.html`, `fingerplan_predict_map.html`).
   - `models/`: predictions CSVs (e.g., `predictions_cph.csv`, `finger_predictions.csv`) and model artifacts.
-  - `reports/`: narrative summaries or run notes.
-  - `metrics/`: CSV/JSON metrics (accuracy, confusion matrix counts).
+  - `reports/`: the full written report.
+  - `metrics/`: charts and overlay outputs.
 
-## Data Flow
-1. Clean data in `01_Raster_data_cleaning.ipynb` → save to `data/processed/`.
-  - Spatial-first, temporal-weighted imputation using KDTree on `x_coord`,`y_coord` (EPSG:25832) and numeric temporal features.
-  - Rows without valid coordinates fall back to global column means.
-  - Save step aligns indices; includes target `y` only if present and length matches.
-2. Augment with spatial centroids using `py_programs/augment_with_geo.py`:
-  - Reads `data/raw/GT_V1_data_cph.csv` and shapefile `data/raw/neighborhood_shapefile/Nabolag_cph_fre_new.shp`.
-  - Detects shapefile key (prefers `munic_clus`, then `cluster_id`) and merges centroids onto CSV by `Cluster_id`.
-  - Reprojects to EPSG:25832; computes polygon centroids.
-  - Outputs `data/processed/GT_V1_data_cph_geo.csv` for spatially-aware analysis.
-## Typical Run Order
-1) Spatial augmentation: `py_programs/augment_with_geo.py` → `data/processed/GT_V1_data_cph_geo.csv`
-2) Cleaning & imputation: `notebooks/01_Raster_data_cleaning.ipynb` → `data/processed/` cleaned dataset
-3) Modeling: `notebooks/02_Machine_Learning_Modell.ipynb` (stratified splits, XGB, tuning, threshold selection for class 0, evaluation, predictions export)
-
-Train/evaluate XGBoost in `03_Machine_Learning_Modell.ipynb` using processed inputs (prefer `GT_V1_data_cph_geo.csv` where spatial features are needed).
 
 ## Conventions
 - Use workspace-relative paths: `os.path.join('data', 'processed', ...)`.
@@ -42,22 +29,12 @@ Train/evaluate XGBoost in `03_Machine_Learning_Modell.ipynb` using processed inp
   - Train/test split: `train_test_split(..., stratify=y, random_state=42)`.
   - Seed any randomness with `random_state=42`.
 - Modeling:
-  - Prefer `XGBClassifier` for binary classification.
+  - Prefer `XGBClassifier` for classification.
   - Metrics: `accuracy_score`, `classification_report`, `ConfusionMatrixDisplay`.
   - Threshold tuning: sweep the class-0 probability threshold to prioritize recall for class 0; use the tuned threshold for downstream predictions.
 - Hyperparameter tuning:
   - `RandomizedSearchCV` with `cv=10`, `n_iter=100`, `scoring='accuracy'`, `n_jobs=-1`, `random_state=42`.
-- Feature importance plotting:
-  ```python
-  fi = best_model.feature_importances_
-  names = X.columns
-  idx = np.argsort(fi)[::-1]
-  plt.figure(figsize=(10, 6))
-  plt.bar(range(len(fi)), fi[idx], align='center')
-  plt.xticks(range(len(fi)), np.array(names)[idx], rotation=90)
-  plt.xlabel('Feature Importance')
-  plt.title('XGBoost Feature Importances')
-  plt.show()
+
   ```
  - Spatial augmentation:
    - Join keys: CSV uses `Cluster_id`; shapefile typically uses `munic_clus` (fallbacks: `cluster_id`, heuristic matches on 'munic'/'cluster').
@@ -87,22 +64,7 @@ jupyter notebook
 ## Typical Workflow
 - Run notebooks top-to-bottom, saving intermediate and final artifacts into `data/processed/`.
 - Keep notebooks clean and deterministic; avoid absolute machine-specific paths.
-- When logic stabilizes (data loading, preprocessing, training), extract it into `py_programs/` and import from notebooks.
- - If you reintroduce dimensionality reduction, drop NaN-containing columns before scaling to ensure valid input.
 
-### Interactive Maps (Leafmap → HTML)
-- Core model map (Notebook 3):
-  - Save slim predictions from `02_Machine_Learning_Modell.ipynb` to `results/models/predictions_cph.csv` with columns: `cluster_id`, `prediction`.
-  - Use `notebooks/03_visualixe_model_training_data.ipynb` to merge predictions with the neighborhood shapefile by `Cluster_id`/`cluster_id`, reproject to EPSG:4326, and build a Leafmap.
-  - Save to `results/figures/prediction_map.html`; open in a browser (inline display disabled).
-  - Status colors: Correct `#2ca02c`, Incorrect `#d62728`, NoPrediction `#7f7f7f`.
-
-- Fingerplan map (Notebook 4):
-  - Load `results/models/finger_predictions.csv` (columns: `cluster_id`, `prediction`).
-  - Load shapefile `data/raw/fingerplanen_shapefile/GTD_clus_fingerplan_lessthan_50.shp`; prefer join key `munic_clus` (fallback heuristics on `cluster_id`/`munic`/`clus`).
-  - Align dtypes for merge, reproject to EPSG:4326.
-  - Build Leafmap using `leafmap.Map.add_geojson(..., style_function=...)` with colors: Class 0 `#2ca02c`, Class 1 `#1f77b4`, Class 2 `#ff7f0e`, NoPrediction `#7f7f7f`.
-  - Save to `results/figures/fingerplan_predict_map.html`.
 
 #### Open saved maps (Windows PowerShell)
 ```powershell
@@ -110,56 +72,32 @@ Start-Process .\results\figures\prediction_map.html
 Start-Process .\results\figures\fingerplan_predict_map.html
 ```
 
-## Notes
-- If external CSVs are needed temporarily, define a configurable variable at the top of the notebook and plan to migrate into `data/processed/`.
-
-
 ## Space-Time Analysis (ArcGIS Pro)
-Generalized batch pipeline for ArcGIS Pro to create Space-Time Cubes, run Emerging Hotspot Analysis, and Time Series Clustering.
+Use the ArcGIS Python Toolbox for a GUI-driven workflow to create Space-Time Cubes, run Time Series Clustering, and optionally Emerging Hotspot Analysis.
 
-- Features: batch CSV processing, organized outputs, JSON-configurable parameters, and simple error handling.
-- Requirements: ArcGIS Pro with Space-Time Pattern Mining tools and `arcpy` (installed with ArcGIS Pro; not a pip package).
+- Toolbox path: [ArcGIS_Toolbox/001STA_Toolbox.pyt](ArcGIS_Toolbox/001STA_Toolbox.pyt)
+- Requirements: ArcGIS Pro with Space-Time Pattern Mining tools (`arcpy` comes with ArcGIS Pro; not installed via pip).
 
-### Configure
-Create `sta_config.json` (at the working directory from which you run the script). Example keys:
+### Add the Toolbox in ArcGIS Pro
+1. Open ArcGIS Pro and your project.
+2. In the Catalog pane, right-click Toolboxes → Add Toolbox.
+3. Browse to [ArcGIS_Toolbox/001STA_Toolbox.pyt](ArcGIS_Toolbox/001STA_Toolbox.pyt)t.
+4. Run the toolbox and the files should be created.
 
-```
-{
-  "clusters_feature": "clusters_hovedstad",
-  "csv_folder": "data/interim/cph_frb_long",
-  "location_id": "cluster_id",
-  "time_field": "Timedate",
-  "time_step_interval": "1 Years",
-  "cluster_count": 6,
-  "neighborhood_distance": "200 Meters",
-  "neighborhood_time_step": 1,
-  "number_of_neighbors": 5,
-  "output_crs": "PROJCS[...]",
-  "scratch_workspace": null,
-  "workspace": null
-}
-```
+### Inputs and Conventions
+- Long-format CSVs (e.g., `cluster_<variable>_long.csv`) should be placed under `data/raw/long_format_csv` .
 
-Folder conventions for CSVs: place long-format files (e.g., `cluster_<variable>_long.csv`) under `data/interim/<folder>` and set `csv_folder` accordingly in the config.
+### Outputs and Downstream Use
+- Space-Time Cubes: [data/processed/space_time_cube](data/processed/space_time_cube)
+- Time Series Clustering: [data/processed/time_series_cluster](data/processed/time_series_cluster)
+- Emerging Hotspot Analysis: [data/processed/emerging_hotspot](data/processed/emerging_hotspot)
+  - Visualize `_chart` DBFs via [notebooks/01_visualize_timeseries_clustering.ipynb](notebooks/01_visualize_timeseries_clustering.ipynb)
+  - Continue weighted overlay and zonal stats in [notebooks/03_weighted_overlay_analysis.ipynb](notebooks/03_weighted_overlay_analysis.ipynb).
 
-### Run
-- Script entry: [py_programs/STA_modelbuilder.py](py_programs/STA_modelbuilder.py)
-- Option A (outputs in current folder): run from repo root
-  - `& .\.venv\Scripts\python.exe py_programs\STA_modelbuilder.py`
-- Option B (keep outputs under results/sta): run from a results subfolder
-  - `cd results`
-  - `mkdir sta` (if needed), then `cd sta`
-  - `& ..\..\.venv\Scripts\python.exe ..\..\py_programs\STA_modelbuilder.py`
-
-Outputs created per run:
-- `space_time_cube/` containing NetCDF cubes
-- `emerging_hotspot/` containing EHA feature classes
-- `time_series_cluster/` containing TSC shapefiles and DBF tables
-
-Troubleshooting tips:
-- Ensure `sta_config.json` points to a valid `csv_folder` and that CSVs include `location_id`, `time_field`, and `Value` columns.
-- If joins fail, confirm the feature and CSV ID columns align and share compatible dtypes.
-- `arcpy` must come from the ArcGIS Pro Python environment; do not install via pip.
+### Notes & Troubleshooting
+- Ensure CSVs include required columns and that `location_id` types match between features and CSVs.
+- Keep output paths inside the repository (e.g., `data/processed/`) to stay reproducible.
+- `arcpy` is available only within the ArcGIS Pro environment; use ArcGIS Pro to run the toolbox tools.
 
 
 

@@ -2,6 +2,12 @@
 
 Notebook-driven Python ML project for analyzing gentrification patterns using XGBoost, with a structured data lifecycle and reproducible workflows.
 
+# Dummy data
+
+Due to our data being copyrighted dummy csv files have been created. 
+To get the correct result these dummy files needs to be replaced and placed in `data/raw` and have the same names as in Notebook 05.
+Furthermore the ArcGIS tool box need the long_format csv files to be placed in the folder `data/raw/long_format_csv`.
+
 ## Workspace Structure
 - `data/`
   - `raw/`, `interim/`, `processed/`: datasets across lifecycle stages. Prefer using files in `data/` and avoid hardcoded absolute paths.

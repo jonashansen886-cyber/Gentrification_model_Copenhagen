@@ -6,13 +6,16 @@ These instructions guide AI coding agents to be productive in this workspace. Fo
 - **Workspace structure:**
   - `data/` with `raw/`, `interim/`, `processed/`: store datasets across lifecycle stages. Agents should not hardcode external paths; prefer using files in `data/`.
   - `notebooks/`: primary analysis in Jupyter notebooks. Key notebooks:
-    - `01_Raster_data_cleaning.ipynb`: data preparation and cleaning (including raster-derived features).
-    - `02_Machine_Learning_Modell.ipynb`: XGBoost classification with stratified splits, hyperparameter tuning, threshold tuning for class 0, and predictions export.
-    - `03_visualixe_model_training_data.ipynb`: core model visualization over neighborhoods.
-    - `04_visualize_model_fingerplan.ipynb`: fingerplan visualization map using Leafmap.
+    - `01_visualize_timeseries_clustering.ipynb`: visualize ArcGIS Time Series Clustering DBF charts and export HTML charts to `results/metrics/charts_html`.
+    - `02_TSC_rasterize_reclassify.ipynb`: rasterize TSC clusters and apply Excel-based reclassification rules; outputs to `data/processed/tsc_reclass`.
+    - `03_weighted_overlay_analysis.ipynb`: compute weighted overlay, run zonal statistics on clusters, and build an interactive map; outputs to `results/metrics/overlay_output`.
+    - `04_raster_data_cleaning.ipynb`: data preparation and cleaning (including raster-derived features).
+    - `05_machine_learning_Model.ipynb`: XGBoost classification with stratified splits, hyperparameter tuning, threshold tuning for class 0, and predictions export.
+    - `06_visualixe_model_training_data.ipynb`: core model visualization over neighborhoods.
+    - `07_visualize_model_fingerplan.ipynb`: fingerplan visualization map using Leafmap.
     - `OLD_*` notebooks: legacy experiments; use for reference, not extension.
   - `py_programs/`: placeholder for reusable Python scripts/functions. Prefer extracting shared logic here.
-- **Data flow:** Clean data is produced in `01_...` and consumed by the ML model in `02_...`. Keep inputs/outputs versioned under `data/processed/` to make runs reproducible.
+- **Data flow:** Clean data is produced in `04_...` and consumed by the ML model in `05_...`. Keep inputs/outputs versioned under `data/processed/` to make runs reproducible.
  - **Spatial augmentation:** Use `py_programs/augment_with_geo.py` to merge centroid coordinates from the shapefile into the primary CSV, producing `data/processed/GT_V1_data_cph_geo.csv` for spatial analysis.
   - Reproject to EPSG:25832 before computing centroids to ensure metric distances.
   - Join key: CSV `Cluster_id` ↔ shapefile `munic_clus` (fallbacks handled).
@@ -27,10 +30,10 @@ These instructions guide AI coding agents to be productive in this workspace. Fo
 
 ## Conventions & Patterns
 - **Paths:** Use `os.path.join` and workspace-relative paths (e.g., `data/processed/...`). Avoid absolute Windows paths like `C:\Users\...` in committed notebooks or scripts.
-- **Splits:** Use `train_test_split(..., stratify=y)` and a fixed `random_state=42` for reproducibility (as seen in `03_Machine_Learning_Modell.ipynb`).
+- **Splits:** Use `train_test_split(..., stratify=y)` and a fixed `random_state=42` for reproducibility (as seen in `05_machine_learning_Model.ipynb`).
 - **Models:** Favor `XGBClassifier` for binary classification. Evaluate with `accuracy_score`, `classification_report`, and `ConfusionMatrixDisplay`.
-- **Tuning:** Hyperparameter search via `RandomizedSearchCV` with `cv=10`, `n_iter=100`, `scoring='accuracy'`, `n_jobs=-1`, `random_state=42`.
- - **Threshold tuning (Notebook 3):** Select the class-0 probability via `best_model.classes_`, binarize labels (`y == 0`), sweep thresholds to prioritize recall for class 0 (tie-breaker F1), and use the tuned threshold `best_t` for downstream predictions (predict 0 if `P(class0) >= best_t`, else `argmax`).
+ - **Tuning:** Hyperparameter search via `RandomizedSearchCV` with `cv=10`, `n_iter=100`, `scoring='accuracy'`, `n_jobs=-1`, `random_state=42`.
+ - **Threshold tuning (Notebook 05):** Select the class-0 probability via `best_model.classes_`, binarize labels (`y == 0`), sweep thresholds to prioritize recall for class 0 (tie-breaker F1), and use the tuned threshold `best_t` for downstream predictions (predict 0 if `P(class0) >= best_t`, else `argmax`).
 - **Feature importance:** Plot using `best_model.feature_importances_` and `matplotlib` after sorting indices.
 - **Language:** Some comments are in Danish; preserve meaning when refactoring.
 - **Code layout:** Keep reusable logic in `py_programs/` for now. When it grows, consider a `src/` layout (e.g., `src/gentrification_model/`) with minimal packaging to enable consistent imports.
@@ -57,10 +60,10 @@ These instructions guide AI coding agents to be productive in this workspace. Fo
   Produces `data/processed/GT_V1_data_cph_geo.csv`.
 
 ### Interactive mapping workflow
-- Core predictions output (Notebook 2): Save slim CSV to `results/models/predictions_cph.csv` with columns: `cluster_id`, `prediction`.
-- Neighborhood visualization (Notebook 3): Load `predictions_cph.csv` and the neighborhood shapefile, normalize join keys (`Cluster_id`/`cluster_id`), reproject to EPSG:4326, and build a Leafmap. Save `results/figures/prediction_map.html`.
-- Fingerplan predictions (Notebook 2): Save slim CSV to `results/models/finger_predictions.csv` with columns: `cluster_id`, `prediction`.
-- Fingerplan visualization (Notebook 4):
+- Core predictions output (Notebook 05): Save slim CSV to `results/models/predictions_cph.csv` with columns: `cluster_id`, `prediction`.
+- Neighborhood visualization (Notebook 06): Load `predictions_cph.csv` and the neighborhood shapefile, normalize join keys (`Cluster_id`/`cluster_id`), reproject to EPSG:4326, and build a Leafmap. Save `results/figures/prediction_map.html`.
+- Fingerplan predictions (Notebook 05): Save slim CSV to `results/models/finger_predictions.csv` with columns: `cluster_id`, `prediction`.
+- Fingerplan visualization (Notebook 07):
   - Load `finger_predictions.csv` and shapefile `data/raw/fingerplanen_shapefile/GTD_clus_fingerplan_lessthan_50.shp`.
   - Prefer shapefile join key `munic_clus` (fallbacks: `cluster_id`, heuristic on columns containing 'munic'/'clus'/'cluster'). Align dtypes and strip leading zeros to avoid mismatches.
   - Reproject to EPSG:4326. Convert GeoDataFrame to GeoJSON using `gdf_merged.to_json()` (then `json.loads(...)`).
@@ -71,6 +74,7 @@ These instructions guide AI coding agents to be productive in this workspace. Fo
 - **CSV inputs:** Prefer reading from `data/processed/` rather than external folders. If an external path is necessary, make it configurable via a variable at the top of the notebook/script.
 - **Visualization:** Use `matplotlib` for plots; keep figure sizes and label rotations readable (see feature importance example).
  - **Leafmap maps:** Save to HTML and open in a browser. Reproject GeoDataFrames to EPSG:4326 before exporting. Prefer `GeoDataFrame.to_json()` → `json.loads(...)` to produce GeoJSON for `add_geojson`.
+ - **ArcGIS Pro toolbox:** Use `ArcGIS_Toolbox/001STA_Toolbox.pyt` with CSV inputs under `data/raw/long_format_csv`. Outputs are written to `data/processed/space_time_cube`, `data/processed/time_series_cluster`, and `data/processed/emerging_hotspot`. Notebook 01 consumes the `_chart` DBFs from `data/processed/time_series_cluster` to export charts to `results/metrics/charts_html`.
 
 ## Examples from the Codebase
 - **Train/validation/test split:**

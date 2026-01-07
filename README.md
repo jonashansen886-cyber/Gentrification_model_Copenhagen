@@ -41,7 +41,6 @@ Furthermore the ArcGIS tool box need the long_format csv files to be placed in t
 - Hyperparameter tuning:
   - `RandomizedSearchCV` with `cv=10`, `n_iter=100`, `scoring='accuracy'`, `n_jobs=-1`, `random_state=42`.
 
-  ```
  - Spatial augmentation:
    - Join keys: CSV uses `Cluster_id`; shapefile typically uses `munic_clus` (fallbacks: `cluster_id`, heuristic matches on 'munic'/'cluster').
    - Coordinates: centroids computed via `gdf.geometry.centroid` into `x_coord` and `y_coord`.
@@ -61,10 +60,33 @@ pip install -r requirements.txt
 jupyter notebook
 ```
 
--## Environment & Layout
+## Setup (macOS/Linux Bash)
+```bash
+# Create and activate virtual environment
+python3 -m venv .venv
+source .venv/bin/activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# (Optional) Register ipykernel
+python -m ipykernel install --user --name gentrification-model
+
+# Launch Jupyter
+jupyter notebook
+```
+
+Tips (macOS):
+- If you hit build issues with `geopandas`/`fiona`/`pyproj` on Apple Silicon, consider using Conda (alternative) or install prebuilt wheels. Conda example:
+  - `conda create -n gentrification-model python=3.10`
+  - `conda activate gentrification-model`
+  - `pip install -r requirements.txt`
+
+## Environment & Layout
 - Virtual environment: use Python venv with `python -m venv .venv`. Do not commit `.venv/`; recreate environments from `requirements.txt`.
- - Prefer using the venv’s interpreter for installs to avoid path confusion:
-   - `& .\.venv\Scripts\python.exe -m pip install <package>`
+  - Prefer using the venv’s interpreter for installs to avoid path confusion:
+    - Windows: `& .\.venv\Scripts\python.exe -m pip install <package>`
+    - macOS/Linux: `python -m pip install <package>` (with venv activated)
 - `src/` layout: keep reusable code in `py_programs/` for now. When it grows, promote to `src/gentrification_model/` with minimal packaging so imports are consistent across notebooks and scripts.
 
 ## Typical Workflow

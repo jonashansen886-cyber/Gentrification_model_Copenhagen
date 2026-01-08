@@ -103,7 +103,7 @@ Start-Process .\results\figures\fingerplan_predict_map.html
 ## Space-Time Analysis (ArcGIS Pro)
 Use the ArcGIS Python Toolbox for a GUI-driven workflow to create Space-Time Cubes, run Time Series Clustering, and optionally Emerging Hotspot Analysis.
 
-- Toolbox path: [ArcGIS_Toolbox/001STA_Toolbox.pyt](ArcGIS_Toolbox/001STA_Toolbox.pyt)
+- Toolbox path: [ArcGIS_Toolbox/001STA_Toolbox.pyt](ArcGIS_Toolbox)
 - Requirements: ArcGIS Pro with Space-Time Pattern Mining tools (`arcpy` comes with ArcGIS Pro; not installed via pip).
 
 ### Add the Toolbox in ArcGIS Pro

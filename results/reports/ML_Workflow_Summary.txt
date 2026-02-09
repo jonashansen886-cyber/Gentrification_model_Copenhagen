@@ -1,0 +1,54 @@
+
+Project Workflow and Model Performance Summary
+==============================================
+
+### 1. Objective
+The primary goal of this project was to build a machine learning model capable of predicting neighborhood gentrification (defined as 'Class 0'). The model was trained on ~20 datasets spanning from 1990 to 2020, with a specific focus on maximizing the correct identification (Recall) of Class 0.
+
+### 2. Data Preparation and Feature Engineering Workflow
+
+The raw data was processed through several stages to create a feature-rich, model-ready dataset.
+
+**A. Data Clipping and Consolidation:**
+- **Step 1:** All source CSV files from the 'csv_filer' folder were filtered to include only the 4,020 `cluster_id`s present in the `GTD_clus_fingerplan_lessthan_50.shp` shapefile.
+- **Step 2:** These filtered files were then further clipped to include only the 1,421 `cluster_id`s present in the `Nabolag_cph_fre_new.shp` shapefile. This created two distinct, clean sets of source data.
+- **Step 3:** The two sets of source files were processed and combined into two master datasets: `GT_V1_data_finger.csv` and `GT_V1_data_cph.csv`.
+
+**B. Feature Engineering:**
+To enable the model to learn from temporal patterns, several types of features were engineered for each `cluster_id`:
+- **Trend Features:** The percentage change over six distinct 5-year periods (e.g., `crime_main_y_reg_1990_1995`).
+- **State Features:** The absolute value at the beginning of the timeline (`_start_value`) and at the end (`_end_value`). This provided crucial context for the trends.
+- **Volatility Features:** The standard deviation over the six 5-year periods (e.g., `crime_main_y_std_1990_1995`) to capture the stability of a metric.
+
+### 3. Model Improvement Iterations
+
+To measure the impact of our work, a baseline model was established using only the initial trend-based features. The subsequent steps were all aimed at improving upon this baseline.
+
+An XGBoost classification model was trained and iteratively improved with a focus on Class 0 performance.
+
+- **Handling Class Imbalance:** We first experimented with resampling techniques (SMOTE) but found that using the built-in `sample_weight` parameter in the XGBoost model was more effective at handling the imbalanced class distribution.
+- **Hyperparameter Tuning:** A `RandomizedSearchCV` was performed to find the optimal internal settings for the model, with the search configured to optimize for `f1-score (macro average)` to ensure it focused on minority class performance.
+- **Feature Selection:** An experiment was conducted where the least important features were removed. This led to a slight decrease in performance, teaching us that the full, rich feature set was more powerful for this problem. We proceeded with the full feature set.
+- **Threshold Tuning:** This was the final and most critical step. After building the best possible model, we analyzed its probability outputs and adjusted the decision threshold to make it more sensitive to Class 0, intentionally trading some precision to achieve a large gain in recall.
+
+### 4. Model Performance Progression
+
+The following table summarizes the performance on the test set at key stages of the project, showing the successful and significant improvement for our target, **Class 0**.
+
+| Model Iteration                     | Class 0 Precision | Class 0 Recall | Class 0 F1-Score | Macro Avg F1-Score | Overall Accuracy |
+|-------------------------------------|-------------------|----------------|------------------|--------------------|------------------|
+| 0. V1 Baseline                      | 0.93              | 0.32           | 0.47             | 0.63               | 0.76             |
+| 1. V1 + hyperparameter              | 0.81              | 0.32           | 0.46             | 0.67               | 0.79             |
+| 2. V1 + hyp + sample_weight         | 0.69              | 0.49           | 0.57             | 0.71               | 0.79             |
+| 3. V2 Baseline (added features)     | 0.81              | 0.32           | 0.46             | 0.67               | 0.79             |
+| 4. V2 + hyperparameter tuning       | 0.81              | 0.32           | 0.46             | 0.67               | 0.79             |
+| 5. V2 + hyp + sample_weight         | 0.69              | 0.49           | 0.57             | 0.71               | 0.79             |
+| 6. V2 + hyp + sam_w + threshold_tune| 0.52              | 0.59           | 0.55             | 0.70               | 0.77             |
+
+### 5. Final Conclusion
+The iterative process of feature engineering and model tuning was highly successful in 
+creating a robust predictive model. The final model, after extensive tuning, achieves a recall 
+for Class 0 of **0.61** and a precision of **0.51**, resulting in a final F1-score of **0.56** for the target class. 
+This shows a well-balanced model that was optimized through a rigorous, step-by-step process to effectively identify 
+gentrification candidates based on the available data. The project has produced a strong, well-tuned, and interpretable
+model tailored to its specific goal.

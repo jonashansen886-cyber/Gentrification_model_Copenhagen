@@ -7,5 +7,8 @@
 /.git_backup/
 .DS_Store
 
-# cvr data
+# cvr data (large JSON files exceed GitHub's 100 MB limit)
 /data/raw/cvr_raw/
+/data/processed/cvr/cvr_joined.json
+/data/processed/cvr/cvr_cph_addresses_names.json
+/data/processed/cvr/cvr_cph_addresses.json

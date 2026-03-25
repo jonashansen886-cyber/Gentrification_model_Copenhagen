@@ -1,0 +1,5752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Map</title>
+</head>
+<body>
+
+
+<!-- Load require.js. Delete this if your page already loads require.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js" crossorigin="anonymous"></script>
+
+<script type="application/vnd.jupyter.widget-state+json">
+{
+  "version_major": 2,
+  "version_minor": 0,
+  "state": {
+    "a609c5cdb5554266aab7ca91069a5144": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "44b2f5a969de4ec8a02d44b4da1f361c": {
+      "model_name": "ForceLoadModel",
+      "model_module": "jupyter-vue",
+      "model_module_version": "^1.11.3",
+      "state": {
+        "_dom_classes": [],
+        "layout": "IPY_MODEL_a609c5cdb5554266aab7ca91069a5144"
+      }
+    },
+    "791ec78d651449b98678359ab4966eb9": {
+      "model_name": "ThemeModel",
+      "model_module": "jupyter-vuetify",
+      "model_module_version": "^1.11.3",
+      "state": {
+        "dark_effective": true
+      }
+    },
+    "1c147f6b310544e5a9eec71562b7f82e": {
+      "model_name": "ThemeColorsModel",
+      "model_module": "jupyter-vuetify",
+      "model_module_version": "^1.11.3",
+      "state": {
+        "_theme_name": "light",
+        "accent": "#82B1FF",
+        "error": "#FF5252",
+        "info": "#2196F3",
+        "primary": "#1976D2",
+        "secondary": "#424242",
+        "success": "#4CAF50",
+        "warning": "#FB8C00"
+      }
+    },
+    "d2cd7f642508431b8c0987873b3bb467": {
+      "model_name": "ThemeColorsModel",
+      "model_module": "jupyter-vuetify",
+      "model_module_version": "^1.11.3",
+      "state": {
+        "_theme_name": "dark",
+        "accent": "#FF4081",
+        "error": "#FF5252",
+        "info": "#2196F3",
+        "primary": "#2196F3",
+        "secondary": "#424242",
+        "success": "#4CAF50",
+        "warning": "#FB8C00"
+      }
+    },
+    "e697ebbdbfa044a08cb887746eb4dc8d": {
+      "model_name": "LeafletMapStyleModel",
+      "model_module": "jupyter-leaflet",
+      "model_module_version": "^0.20",
+      "state": {}
+    },
+    "0f8ada30c4814df6a3763111405fc6c9": {
+      "model_name": "LeafletMapStyleModel",
+      "model_module": "jupyter-leaflet",
+      "model_module_version": "^0.20",
+      "state": {
+        "cursor": "move"
+      }
+    },
+    "c00ba5581fd64e7282244216a5bb5172": {
+      "model_name": "LeafletTileLayerModel",
+      "model_module": "jupyter-leaflet",
+      "model_module_version": "^0.20",
+      "state": {
+        "attribution": "&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors",
+        "base": true,
+        "max_zoom": 19,
+        "min_zoom": 1,
+        "name": "OpenStreetMap",
+        "options": [
+          "attribution",
+          "bounds",
+          "detect_retina",
+          "max_native_zoom",
+          "max_zoom",
+          "min_native_zoom",
+          "min_zoom",
+          "no_wrap",
+          "pm_ignore",
+          "tile_size",
+          "tms",
+          "zoom_offset"
+        ],
+        "subitems": []
+      }
+    },
+    "0435ed0edf324d2bb617c137bb3ddc7b": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "height": "880px",
+        "width": "100%"
+      }
+    },
+    "a3de539f896442d7af50229472919856": {
+      "model_name": "LeafletMapStyleModel",
+      "model_module": "jupyter-leaflet",
+      "model_module_version": "^0.20",
+      "state": {}
+    },
+    "56bd22bf1c2f42718b538d8a22baeca5": {
+      "model_name": "LeafletMapModel",
+      "model_module": "jupyter-leaflet",
+      "model_module_version": "^0.20",
+      "state": {
+        "_dom_classes": [],
+        "center": [
+          55.78809146031747,
+          11.207167122857143
+        ],
+        "controls": [
+          "IPY_MODEL_9291de4749c44224b376186d9b9cce88",
+          "IPY_MODEL_f9a597b736084d048f536191d721c005",
+          "IPY_MODEL_a65fe8d9bc244a3e9bc244124d745f24",
+          "IPY_MODEL_2dcfd7282f5344bbb92b463a9dcf0480",
+          "IPY_MODEL_f5756c14ee814380b45d9c37358cf904",
+          "IPY_MODEL_f2effb3eeecc462e913dec87c3972dfb",
+          "IPY_MODEL_bd6215ffc9854678994a2c6b51b36762",
+          "IPY_MODEL_307f27058ac044f3a2fa77d0420a3d8c"
+        ],
+        "crs": {
+          "name": "EPSG3857",
+          "custom": false
+        },
+        "default_style": "IPY_MODEL_e697ebbdbfa044a08cb887746eb4dc8d",
+        "dragging_style": "IPY_MODEL_0f8ada30c4814df6a3763111405fc6c9",
+        "layers": [
+          "IPY_MODEL_c00ba5581fd64e7282244216a5bb5172",
+          "IPY_MODEL_1bff01f13dfa4cc0a492e8f553464c54"
+        ],
+        "layout": "IPY_MODEL_0435ed0edf324d2bb617c137bb3ddc7b",
+        "max_zoom": 24.0,
+        "options": [
+          "bounce_at_zoom_limits",
+          "box_zoom",
+          "center",
+          "close_popup_on_click",
+          "double_click_zoom",
+          "dragging",
+          "fullscreen",
+          "inertia",
+          "inertia_deceleration",
+          "inertia_max_speed",
+          "interpolation",
+          "keyboard",
+          "keyboard_pan_offset",
+          "keyboard_zoom_offset",
+          "max_zoom",
+          "min_zoom",
+          "prefer_canvas",
+          "scroll_wheel_zoom",
+          "tap",
+          "tap_tolerance",
+          "touch_zoom",
+          "world_copy_jump",
+          "zoom",
+          "zoom_animation_threshold",
+          "zoom_delta",
+          "zoom_snap"
+        ],
+        "panes": {},
+        "scroll_wheel_zoom": true,
+        "style": "IPY_MODEL_a3de539f896442d7af50229472919856",
+        "zoom": 7.0
+      }
+    },
+    "9291de4749c44224b376186d9b9cce88": {
+      "model_name": "LeafletZoomControlModel",
+      "model_module": "jupyter-leaflet",
+      "model_module_version": "^0.20",
+      "state": {
+        "options": [
+          "position",
+          "zoom_in_text",
+          "zoom_in_title",
+          "zoom_out_text",
+          "zoom_out_title"
+        ]
+      }
+    },
+    "f9a597b736084d048f536191d721c005": {
+      "model_name": "LeafletAttributionControlModel",
+      "model_module": "jupyter-leaflet",
+      "model_module_version": "^0.20",
+      "state": {
+        "options": [
+          "position",
+          "prefix"
+        ],
+        "position": "bottomright"
+      }
+    },
+    "04d5a8b043fd45c0a85a2dd9ea03e1f3": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "74edce4659c440cb8ca42fd9583cf4fd": {
+      "model_name": "VBoxModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "children": [
+          "IPY_MODEL_8ee343820de042d28a557773ce1cd4d4",
+          "IPY_MODEL_f1d0177bb66f4267b1e83d6e569360ff",
+          "IPY_MODEL_11fb212403864844b5ebc075d16c09ce"
+        ],
+        "layout": "IPY_MODEL_04d5a8b043fd45c0a85a2dd9ea03e1f3"
+      }
+    },
+    "a65fe8d9bc244a3e9bc244124d745f24": {
+      "model_name": "LeafletFullScreenControlModel",
+      "model_module": "jupyter-leaflet",
+      "model_module_version": "^0.20",
+      "state": {
+        "options": [
+          "position"
+        ]
+      }
+    },
+    "1ce2f466f3304b43a7b5f64819b1c6a3": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "width": "500px"
+      }
+    },
+    "6a233748ccb24c59a849b22b3eeac6c8": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "height": "28px",
+        "padding": "0px 0px 0px 4px",
+        "width": "28px"
+      }
+    },
+    "cad0f33bd3d94999bc652d138030f1c5": {
+      "model_name": "ToggleButtonStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "a52678fcbc8d4ee48becf1069fc76f39": {
+      "model_name": "ToggleButtonModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "icon": "server",
+        "layout": "IPY_MODEL_6a233748ccb24c59a849b22b3eeac6c8",
+        "style": "IPY_MODEL_cad0f33bd3d94999bc652d138030f1c5",
+        "tooltip": "Layer Manager",
+        "value": true
+      }
+    },
+    "b517a112462d4b69bd4289c988a3338c": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "height": "28px",
+        "padding": "0px 0px 0px 4px",
+        "width": "28px"
+      }
+    },
+    "d5852ee70d474a628d2b29493a81d219": {
+      "model_name": "ToggleButtonStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "12fb019e641b4cad96ac3a79ed44fd3d": {
+      "model_name": "ToggleButtonModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "button_style": "primary",
+        "icon": "times",
+        "layout": "IPY_MODEL_b517a112462d4b69bd4289c988a3338c",
+        "style": "IPY_MODEL_d5852ee70d474a628d2b29493a81d219",
+        "tooltip": "Close the tool"
+      }
+    },
+    "eafb3f5f8d8e4afd89566ac84d18dc3c": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "20572200845e43cd9291333b4fd91a61": {
+      "model_name": "HBoxModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "children": [
+          "IPY_MODEL_12fb019e641b4cad96ac3a79ed44fd3d",
+          "IPY_MODEL_a52678fcbc8d4ee48becf1069fc76f39"
+        ],
+        "layout": "IPY_MODEL_eafb3f5f8d8e4afd89566ac84d18dc3c"
+      }
+    },
+    "dde40b43666b41a8b2047dead0a0e62e": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "cb7f15a859774160b8907089b5f354ad": {
+      "model_name": "VBoxModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "children": [
+          "IPY_MODEL_4fe1cdbc25f0461f9882a9c3c6bf34c4",
+          "IPY_MODEL_36a348c714d543209285f3eb9d1a23a3"
+        ],
+        "layout": "IPY_MODEL_dde40b43666b41a8b2047dead0a0e62e"
+      }
+    },
+    "e7bdb581fa7e4c2f85ce1631a7c1fc6d": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "8c9c39d064d24b7c9f6c889fbfde494f": {
+      "model_name": "VBoxModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "children": [
+          "IPY_MODEL_20572200845e43cd9291333b4fd91a61",
+          "IPY_MODEL_cb7f15a859774160b8907089b5f354ad"
+        ],
+        "layout": "IPY_MODEL_e7bdb581fa7e4c2f85ce1631a7c1fc6d"
+      }
+    },
+    "08288a385eb048d3bb303f8e49b68a28": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "height": "18px",
+        "padding": "0px 8px 25px 8px",
+        "width": "30ex"
+      }
+    },
+    "ac51fd3cc079469f83ee68e670c45908": {
+      "model_name": "CheckboxStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "4fe1cdbc25f0461f9882a9c3c6bf34c4": {
+      "model_name": "CheckboxModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "description": "All layers on/off",
+        "indent": false,
+        "layout": "IPY_MODEL_08288a385eb048d3bb303f8e49b68a28",
+        "style": "IPY_MODEL_ac51fd3cc079469f83ee68e670c45908"
+      }
+    },
+    "8d55560edf7f4004b86ee03be6adcab4": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "height": "18px",
+        "width": "25ex"
+      }
+    },
+    "ac3b177cbc0c4c18883eec3a2c2b51a4": {
+      "model_name": "CheckboxStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "373db04a769c4950888bd49ae68899d6": {
+      "model_name": "CheckboxModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "description": "OpenStreetMap.Mapnik",
+        "indent": false,
+        "layout": "IPY_MODEL_8d55560edf7f4004b86ee03be6adcab4",
+        "style": "IPY_MODEL_ac3b177cbc0c4c18883eec3a2c2b51a4",
+        "value": true
+      }
+    },
+    "0b256f775efe4aefb1734c4b7384b5fb": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "width": "80px"
+      }
+    },
+    "1a52ff38ff19403cb2c4a2db4064bf70": {
+      "model_name": "SliderStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "c961e345475e442e88df7d34205e715b": {
+      "model_name": "FloatSliderModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "layout": "IPY_MODEL_0b256f775efe4aefb1734c4b7384b5fb",
+        "max": 1.0,
+        "readout": false,
+        "step": 0.01,
+        "style": "IPY_MODEL_1a52ff38ff19403cb2c4a2db4064bf70",
+        "value": 1.0
+      }
+    },
+    "d5554d30409a4cb99d3edf66f307ac52": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "height": "25px",
+        "padding": "0px 0px 0px 0px",
+        "width": "25px"
+      }
+    },
+    "46541c70ffce49cdbf141f98180cf1c6": {
+      "model_name": "ButtonStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "577015fd5d12414e9c0e65660578020d": {
+      "model_name": "ButtonModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "icon": "gear",
+        "layout": "IPY_MODEL_d5554d30409a4cb99d3edf66f307ac52",
+        "style": "IPY_MODEL_46541c70ffce49cdbf141f98180cf1c6",
+        "tooltip": "OpenStreetMap.Mapnik"
+      }
+    },
+    "e66453e78922423bbceefcc929c45196": {
+      "model_name": "LinkModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "source": [
+          "IPY_MODEL_373db04a769c4950888bd49ae68899d6",
+          "value"
+        ],
+        "target": [
+          "IPY_MODEL_c00ba5581fd64e7282244216a5bb5172",
+          "visible"
+        ]
+      }
+    },
+    "57eea047807940d7bfee25a7682e5135": {
+      "model_name": "DirectionalLinkModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "source": [
+          "IPY_MODEL_c961e345475e442e88df7d34205e715b",
+          "value"
+        ],
+        "target": [
+          "IPY_MODEL_c00ba5581fd64e7282244216a5bb5172",
+          "opacity"
+        ]
+      }
+    },
+    "3a90b0ffec6e4d829acad50c17da99f2": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "padding": "0px 8px 0px 8px"
+      }
+    },
+    "36a348c714d543209285f3eb9d1a23a3": {
+      "model_name": "HBoxModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "children": [
+          "IPY_MODEL_373db04a769c4950888bd49ae68899d6",
+          "IPY_MODEL_577015fd5d12414e9c0e65660578020d",
+          "IPY_MODEL_c961e345475e442e88df7d34205e715b"
+        ],
+        "layout": "IPY_MODEL_3a90b0ffec6e4d829acad50c17da99f2"
+      }
+    },
+    "2dcfd7282f5344bbb92b463a9dcf0480": {
+      "model_name": "LeafletDrawControlModel",
+      "model_module": "jupyter-leaflet",
+      "model_module_version": "^0.20",
+      "state": {
+        "circle": {
+          "shapeOptions": {
+            "color": "#3388ff"
+          },
+          "repeatMode": false
+        },
+        "circlemarker": {},
+        "data": [],
+        "marker": {
+          "shapeOptions": {
+            "color": "#3388ff"
+          },
+          "repeatMode": false
+        },
+        "options": [
+          "position"
+        ],
+        "polygon": {
+          "repeatMode": false
+        },
+        "polyline": {
+          "repeatMode": false
+        },
+        "rectangle": {
+          "shapeOptions": {
+            "color": "#3388ff"
+          },
+          "repeatMode": false
+        }
+      }
+    },
+    "242c21563ff7444eae957577b4dcccac": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "height": "28px",
+        "padding": "0px 0px 0px 4px",
+        "width": "28px"
+      }
+    },
+    "634075da225c4fae93d41b17583a87cb": {
+      "model_name": "ToggleButtonStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "d8572c3d051f454dac9cdb14999cc852": {
+      "model_name": "ToggleButtonModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "icon": "server",
+        "layout": "IPY_MODEL_242c21563ff7444eae957577b4dcccac",
+        "style": "IPY_MODEL_634075da225c4fae93d41b17583a87cb",
+        "tooltip": "Layer Manager",
+        "value": true
+      }
+    },
+    "3d75d1e8ea4943189a6c98834b18d32a": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "height": "28px",
+        "padding": "0px 0px 0px 4px",
+        "width": "28px"
+      }
+    },
+    "aa0270b763db4c3b881cb1bfa636bda5": {
+      "model_name": "ToggleButtonStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "3504eb8736c244c0b7a79e9a074c0e40": {
+      "model_name": "ToggleButtonModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "button_style": "primary",
+        "icon": "times",
+        "layout": "IPY_MODEL_3d75d1e8ea4943189a6c98834b18d32a",
+        "style": "IPY_MODEL_aa0270b763db4c3b881cb1bfa636bda5",
+        "tooltip": "Close the tool"
+      }
+    },
+    "6e9d3383fa7f4822b8afc15dfbb995c8": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "7f30939f6c3c4fb89d97f6079103c101": {
+      "model_name": "HBoxModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "children": [
+          "IPY_MODEL_3504eb8736c244c0b7a79e9a074c0e40",
+          "IPY_MODEL_d8572c3d051f454dac9cdb14999cc852"
+        ],
+        "layout": "IPY_MODEL_6e9d3383fa7f4822b8afc15dfbb995c8"
+      }
+    },
+    "c92a4805ed7042509b9cc563a50fcdbc": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "5335fe7ba0b64483855d975dd7ee204e": {
+      "model_name": "VBoxModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "children": [
+          "IPY_MODEL_33c19889578f40149f12756cd2bf48ed",
+          "IPY_MODEL_d81a1e2e4a594f28a1099c5c19635ca7"
+        ],
+        "layout": "IPY_MODEL_c92a4805ed7042509b9cc563a50fcdbc"
+      }
+    },
+    "58fe8f02deb44812970451622d3eb32e": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "838a5bafbd0444e687f97f48e22c8f4e": {
+      "model_name": "VBoxModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "children": [
+          "IPY_MODEL_7f30939f6c3c4fb89d97f6079103c101",
+          "IPY_MODEL_5335fe7ba0b64483855d975dd7ee204e"
+        ],
+        "layout": "IPY_MODEL_58fe8f02deb44812970451622d3eb32e"
+      }
+    },
+    "f2c1f7ef8a6b4377adcea722de8a661e": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "height": "18px",
+        "padding": "0px 8px 25px 8px",
+        "width": "30ex"
+      }
+    },
+    "a2edeb192c284eba9371b10f7ddd9b30": {
+      "model_name": "CheckboxStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "33c19889578f40149f12756cd2bf48ed": {
+      "model_name": "CheckboxModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "description": "All layers on/off",
+        "indent": false,
+        "layout": "IPY_MODEL_f2c1f7ef8a6b4377adcea722de8a661e",
+        "style": "IPY_MODEL_a2edeb192c284eba9371b10f7ddd9b30"
+      }
+    },
+    "45d30bcdb362446984ab327756e6ce66": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "height": "18px",
+        "width": "25ex"
+      }
+    },
+    "d613f7b44f964cd3b0341df726da6e1e": {
+      "model_name": "CheckboxStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "c772927e71eb490ea49a4988eddded8c": {
+      "model_name": "CheckboxModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "description": "OpenStreetMap.Mapnik",
+        "indent": false,
+        "layout": "IPY_MODEL_45d30bcdb362446984ab327756e6ce66",
+        "style": "IPY_MODEL_d613f7b44f964cd3b0341df726da6e1e",
+        "value": true
+      }
+    },
+    "991262919b0a4754a3bfb714e9375c4b": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "width": "80px"
+      }
+    },
+    "c2c3781976414045875625588b9a328b": {
+      "model_name": "SliderStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "83887b5bc5704af4bb3bc6c48e78e8ea": {
+      "model_name": "FloatSliderModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "layout": "IPY_MODEL_991262919b0a4754a3bfb714e9375c4b",
+        "max": 1.0,
+        "readout": false,
+        "step": 0.01,
+        "style": "IPY_MODEL_c2c3781976414045875625588b9a328b",
+        "value": 1.0
+      }
+    },
+    "54cca5841d24417da96e11535a5cfef1": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "height": "25px",
+        "padding": "0px 0px 0px 0px",
+        "width": "25px"
+      }
+    },
+    "07e7fd9581514b6eafa262d7be0eecd7": {
+      "model_name": "ButtonStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "8c16a2a878dd4dc6b4ada96109968dc6": {
+      "model_name": "ButtonModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "icon": "gear",
+        "layout": "IPY_MODEL_54cca5841d24417da96e11535a5cfef1",
+        "style": "IPY_MODEL_07e7fd9581514b6eafa262d7be0eecd7",
+        "tooltip": "OpenStreetMap.Mapnik"
+      }
+    },
+    "90203c54919445dca765730a12669025": {
+      "model_name": "LinkModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "source": [
+          "IPY_MODEL_c772927e71eb490ea49a4988eddded8c",
+          "value"
+        ],
+        "target": [
+          "IPY_MODEL_c00ba5581fd64e7282244216a5bb5172",
+          "visible"
+        ]
+      }
+    },
+    "2ebdb2cc8ca7462e99c4cadc56910799": {
+      "model_name": "DirectionalLinkModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "source": [
+          "IPY_MODEL_83887b5bc5704af4bb3bc6c48e78e8ea",
+          "value"
+        ],
+        "target": [
+          "IPY_MODEL_c00ba5581fd64e7282244216a5bb5172",
+          "opacity"
+        ]
+      }
+    },
+    "c1adc6c44a114a2284a1ce0c00c06047": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "padding": "0px 8px 0px 8px"
+      }
+    },
+    "d81a1e2e4a594f28a1099c5c19635ca7": {
+      "model_name": "HBoxModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "children": [
+          "IPY_MODEL_c772927e71eb490ea49a4988eddded8c",
+          "IPY_MODEL_8c16a2a878dd4dc6b4ada96109968dc6",
+          "IPY_MODEL_83887b5bc5704af4bb3bc6c48e78e8ea"
+        ],
+        "layout": "IPY_MODEL_c1adc6c44a114a2284a1ce0c00c06047"
+      }
+    },
+    "f5756c14ee814380b45d9c37358cf904": {
+      "model_name": "LeafletScaleControlModel",
+      "model_module": "jupyter-leaflet",
+      "model_module_version": "^0.20",
+      "state": {
+        "options": [
+          "imperial",
+          "max_width",
+          "metric",
+          "position",
+          "update_when_idle"
+        ],
+        "position": "bottomleft"
+      }
+    },
+    "b89ade75120045199852a27dee18d257": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "height": "28px",
+        "padding": "0px 0px 0px 4px",
+        "width": "28px"
+      }
+    },
+    "06443499703049f5b54ed1a52f001ba3": {
+      "model_name": "ToggleButtonStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "21398809a8ed4a70b1577f6f3dcc33e5": {
+      "model_name": "ToggleButtonModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "icon": "server",
+        "layout": "IPY_MODEL_b89ade75120045199852a27dee18d257",
+        "style": "IPY_MODEL_06443499703049f5b54ed1a52f001ba3",
+        "tooltip": "Layer Manager",
+        "value": true
+      }
+    },
+    "48b1eb436b044674865365f2574969ce": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "height": "28px",
+        "padding": "0px 0px 0px 4px",
+        "width": "28px"
+      }
+    },
+    "eab4b254eea140f1842ebcb1f392aa67": {
+      "model_name": "ToggleButtonStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "3105779b5ef1421088531afd1da0230c": {
+      "model_name": "ToggleButtonModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "button_style": "primary",
+        "icon": "times",
+        "layout": "IPY_MODEL_48b1eb436b044674865365f2574969ce",
+        "style": "IPY_MODEL_eab4b254eea140f1842ebcb1f392aa67",
+        "tooltip": "Close the tool"
+      }
+    },
+    "64e5575e80504db38c843404a21e4a13": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "bc184dcb08da45c6835b3837cd3ca14f": {
+      "model_name": "HBoxModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "children": [
+          "IPY_MODEL_3105779b5ef1421088531afd1da0230c",
+          "IPY_MODEL_21398809a8ed4a70b1577f6f3dcc33e5"
+        ],
+        "layout": "IPY_MODEL_64e5575e80504db38c843404a21e4a13"
+      }
+    },
+    "3f879191d6334266a27e8274b4553a7d": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "9966d99ec0be402a9cddcdc41e2566f5": {
+      "model_name": "VBoxModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "children": [
+          "IPY_MODEL_a963e8b25ee844a8954c4339fbe9ed8f",
+          "IPY_MODEL_330518e1f58848fe9c96d224db0dd919"
+        ],
+        "layout": "IPY_MODEL_3f879191d6334266a27e8274b4553a7d"
+      }
+    },
+    "2080008b61784abda6f5282cc688541e": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "bf020e02eac04a57a168d7d59f74ff6e": {
+      "model_name": "VBoxModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "children": [
+          "IPY_MODEL_bc184dcb08da45c6835b3837cd3ca14f",
+          "IPY_MODEL_9966d99ec0be402a9cddcdc41e2566f5"
+        ],
+        "layout": "IPY_MODEL_2080008b61784abda6f5282cc688541e"
+      }
+    },
+    "ec29774e47ac48dc8d8bed346a874413": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "height": "18px",
+        "padding": "0px 8px 25px 8px",
+        "width": "30ex"
+      }
+    },
+    "41336a4359514a7ab80d1389124b489e": {
+      "model_name": "CheckboxStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "a963e8b25ee844a8954c4339fbe9ed8f": {
+      "model_name": "CheckboxModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "description": "All layers on/off",
+        "indent": false,
+        "layout": "IPY_MODEL_ec29774e47ac48dc8d8bed346a874413",
+        "style": "IPY_MODEL_41336a4359514a7ab80d1389124b489e"
+      }
+    },
+    "88a47b7ad73849eeb19b442bdea2a9b3": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "height": "18px",
+        "width": "25ex"
+      }
+    },
+    "42f65e2eb29f407d87d64ef393dfd0b4": {
+      "model_name": "CheckboxStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "65bdd0cf4b3b4169921ca1be0f85eb82": {
+      "model_name": "CheckboxModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "description": "OpenStreetMap.Mapnik",
+        "indent": false,
+        "layout": "IPY_MODEL_88a47b7ad73849eeb19b442bdea2a9b3",
+        "style": "IPY_MODEL_42f65e2eb29f407d87d64ef393dfd0b4",
+        "value": true
+      }
+    },
+    "3b3edb52391546c5919c1ab55ec3c45a": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "width": "80px"
+      }
+    },
+    "1155a6ff65a04672964504eda5cfc19a": {
+      "model_name": "SliderStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "3980c65197e14f7db8575f909c09b12e": {
+      "model_name": "FloatSliderModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "layout": "IPY_MODEL_3b3edb52391546c5919c1ab55ec3c45a",
+        "max": 1.0,
+        "readout": false,
+        "step": 0.01,
+        "style": "IPY_MODEL_1155a6ff65a04672964504eda5cfc19a",
+        "value": 1.0
+      }
+    },
+    "91906554a4d844258e71f221079f3282": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "height": "25px",
+        "padding": "0px 0px 0px 0px",
+        "width": "25px"
+      }
+    },
+    "e0f73065c21948e7a5e73ce3b81a697d": {
+      "model_name": "ButtonStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "d7b51b8fcd44463c9e5bfc0c902ce706": {
+      "model_name": "ButtonModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "icon": "gear",
+        "layout": "IPY_MODEL_91906554a4d844258e71f221079f3282",
+        "style": "IPY_MODEL_e0f73065c21948e7a5e73ce3b81a697d",
+        "tooltip": "OpenStreetMap.Mapnik"
+      }
+    },
+    "92cc08db96b445129d2311a5641a8bc6": {
+      "model_name": "LinkModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "source": [
+          "IPY_MODEL_65bdd0cf4b3b4169921ca1be0f85eb82",
+          "value"
+        ],
+        "target": [
+          "IPY_MODEL_c00ba5581fd64e7282244216a5bb5172",
+          "visible"
+        ]
+      }
+    },
+    "1633fcea5a9d467fa6cf9fe6d8d12643": {
+      "model_name": "DirectionalLinkModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "source": [
+          "IPY_MODEL_3980c65197e14f7db8575f909c09b12e",
+          "value"
+        ],
+        "target": [
+          "IPY_MODEL_c00ba5581fd64e7282244216a5bb5172",
+          "opacity"
+        ]
+      }
+    },
+    "e2d3e12070dc4f6889d1e8f72338640b": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "padding": "0px 8px 0px 8px"
+      }
+    },
+    "330518e1f58848fe9c96d224db0dd919": {
+      "model_name": "HBoxModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "children": [
+          "IPY_MODEL_65bdd0cf4b3b4169921ca1be0f85eb82",
+          "IPY_MODEL_d7b51b8fcd44463c9e5bfc0c902ce706",
+          "IPY_MODEL_3980c65197e14f7db8575f909c09b12e"
+        ],
+        "layout": "IPY_MODEL_e2d3e12070dc4f6889d1e8f72338640b"
+      }
+    },
+    "da5845c8a10644ce9b805e89d360da42": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "height": "auto",
+        "padding": "0px 0px 0px 4px",
+        "width": "auto"
+      }
+    },
+    "504607123f4d4374a654abc5bdb9035e": {
+      "model_name": "ToggleButtonStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "eb57b9740ab14b1b943937cd8645c064": {
+      "model_name": "ToggleButtonModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "button_style": "primary",
+        "icon": "map",
+        "layout": "IPY_MODEL_da5845c8a10644ce9b805e89d360da42",
+        "style": "IPY_MODEL_504607123f4d4374a654abc5bdb9035e",
+        "tooltip": "Change basemap"
+      }
+    },
+    "b6ae2b39138a4f4aba3a430f54daface": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "height": "auto",
+        "padding": "0px 0px 0px 4px",
+        "width": "auto"
+      }
+    },
+    "54a8c06acee64474ba9a74b6e4f4f519": {
+      "model_name": "ToggleButtonStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "919618d41c8d44e4943944c36960fea5": {
+      "model_name": "ToggleButtonModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "button_style": "primary",
+        "icon": "globe",
+        "layout": "IPY_MODEL_b6ae2b39138a4f4aba3a430f54daface",
+        "style": "IPY_MODEL_54a8c06acee64474ba9a74b6e4f4f519",
+        "tooltip": "Split-panel map"
+      }
+    },
+    "b1d4675efbdb452f8eeb9012731bda79": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "height": "auto",
+        "padding": "0px 0px 0px 4px",
+        "width": "auto"
+      }
+    },
+    "a14cd0672e4a4685bdb318ee412033f9": {
+      "model_name": "ToggleButtonStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "332fe08a10484396922f05c0758779b2": {
+      "model_name": "ToggleButtonModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "button_style": "primary",
+        "icon": "adjust",
+        "layout": "IPY_MODEL_b1d4675efbdb452f8eeb9012731bda79",
+        "style": "IPY_MODEL_a14cd0672e4a4685bdb318ee412033f9",
+        "tooltip": "Planet imagery"
+      }
+    },
+    "ab79c8a6417b468e9bbbf10491cb7ba9": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "height": "auto",
+        "padding": "0px 0px 0px 4px",
+        "width": "auto"
+      }
+    },
+    "5b08dc6514544c9fbc35519cc188a732": {
+      "model_name": "ToggleButtonStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "7e80ae66ccd4453794b6680ebbad8d07": {
+      "model_name": "ToggleButtonModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "button_style": "primary",
+        "icon": "folder-open",
+        "layout": "IPY_MODEL_ab79c8a6417b468e9bbbf10491cb7ba9",
+        "style": "IPY_MODEL_5b08dc6514544c9fbc35519cc188a732",
+        "tooltip": "Open local vector/raster data"
+      }
+    },
+    "a2917e96442a416d86910e33af3a7384": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "height": "auto",
+        "padding": "0px 0px 0px 4px",
+        "width": "auto"
+      }
+    },
+    "05ed61ec8c294cc784e9af603a7179ca": {
+      "model_name": "ToggleButtonStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "90352aefcd3045ed9b5c5878ff8f994d": {
+      "model_name": "ToggleButtonModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "button_style": "primary",
+        "icon": "gears",
+        "layout": "IPY_MODEL_a2917e96442a416d86910e33af3a7384",
+        "style": "IPY_MODEL_05ed61ec8c294cc784e9af603a7179ca",
+        "tooltip": "WhiteboxTools for local geoprocessing"
+      }
+    },
+    "9b659868111c4b10aee0a617c6ecadff": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "height": "auto",
+        "padding": "0px 0px 0px 4px",
+        "width": "auto"
+      }
+    },
+    "ceb7b4f3d70b409fa2a52d0a49341737": {
+      "model_name": "ToggleButtonStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "2a6f52e38ecd46f78545355c614bf2f7": {
+      "model_name": "ToggleButtonModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "button_style": "primary",
+        "icon": "fast-forward",
+        "layout": "IPY_MODEL_9b659868111c4b10aee0a617c6ecadff",
+        "style": "IPY_MODEL_ceb7b4f3d70b409fa2a52d0a49341737",
+        "tooltip": "Activate the time slider"
+      }
+    },
+    "1c5154e0713340e2b7010d584dbd9287": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "height": "auto",
+        "padding": "0px 0px 0px 4px",
+        "width": "auto"
+      }
+    },
+    "aa0ac2eb134543e2bae35e3cf6c8cdb6": {
+      "model_name": "ToggleButtonStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "0a4e6e2416e94aaa9e759a37e7c0067c": {
+      "model_name": "ToggleButtonModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "button_style": "primary",
+        "icon": "eraser",
+        "layout": "IPY_MODEL_1c5154e0713340e2b7010d584dbd9287",
+        "style": "IPY_MODEL_aa0ac2eb134543e2bae35e3cf6c8cdb6",
+        "tooltip": "Remove all drawn features"
+      }
+    },
+    "8b3189e28f034682954996391749eedb": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "height": "auto",
+        "padding": "0px 0px 0px 4px",
+        "width": "auto"
+      }
+    },
+    "41f41c4c781643479ece450aef9d70a1": {
+      "model_name": "ToggleButtonStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "808f0383797941879011889c666b3282": {
+      "model_name": "ToggleButtonModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "button_style": "primary",
+        "icon": "camera",
+        "layout": "IPY_MODEL_8b3189e28f034682954996391749eedb",
+        "style": "IPY_MODEL_41f41c4c781643479ece450aef9d70a1",
+        "tooltip": "Save map as HTML or image"
+      }
+    },
+    "48e0a6dd98a548778676daa4599b354d": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "height": "auto",
+        "padding": "0px 0px 0px 4px",
+        "width": "auto"
+      }
+    },
+    "7e066121c98341d5a3714d962f366c54": {
+      "model_name": "ToggleButtonStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "36bd03147d5d4f9fb12e19a967878e09": {
+      "model_name": "ToggleButtonModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "button_style": "primary",
+        "icon": "filter",
+        "layout": "IPY_MODEL_48e0a6dd98a548778676daa4599b354d",
+        "style": "IPY_MODEL_7e066121c98341d5a3714d962f366c54",
+        "tooltip": "Get US Census data"
+      }
+    },
+    "4c5b44bc28f04460825a2ce11a4069f9": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "height": "auto",
+        "padding": "0px 0px 0px 4px",
+        "width": "auto"
+      }
+    },
+    "77edec3f3c6244bd99bcca2833f7d2f6": {
+      "model_name": "ToggleButtonStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "69ec3e807e1e4bebbaedca74a5463430": {
+      "model_name": "ToggleButtonModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "button_style": "primary",
+        "icon": "info",
+        "layout": "IPY_MODEL_4c5b44bc28f04460825a2ce11a4069f9",
+        "style": "IPY_MODEL_77edec3f3c6244bd99bcca2833f7d2f6",
+        "tooltip": "Get COG/STAC pixel value"
+      }
+    },
+    "fe8a6b80f57d4d6091dae64d424c422a": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "height": "auto",
+        "padding": "0px 0px 0px 4px",
+        "width": "auto"
+      }
+    },
+    "94e8b8d5715c41c383f2c67e8be7d9ec": {
+      "model_name": "ToggleButtonStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "3d7a96ed01db4909a679668eff6bfa17": {
+      "model_name": "ToggleButtonModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "button_style": "primary",
+        "icon": "search",
+        "layout": "IPY_MODEL_fe8a6b80f57d4d6091dae64d424c422a",
+        "style": "IPY_MODEL_94e8b8d5715c41c383f2c67e8be7d9ec",
+        "tooltip": "Search XYZ tile services"
+      }
+    },
+    "e9592eef7ab7435b87a9ccce9803357e": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "height": "auto",
+        "padding": "0px 0px 0px 4px",
+        "width": "auto"
+      }
+    },
+    "55693726c62440d6a315cf6c39f8a9c7": {
+      "model_name": "ToggleButtonStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "fe29d9c7268b4f9ebc37a03babb98a8e": {
+      "model_name": "ToggleButtonModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "button_style": "primary",
+        "icon": "download",
+        "layout": "IPY_MODEL_e9592eef7ab7435b87a9ccce9803357e",
+        "style": "IPY_MODEL_55693726c62440d6a315cf6c39f8a9c7",
+        "tooltip": "Download OSM data"
+      }
+    },
+    "51403b45235b4a2283239f1406202ccd": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "height": "auto",
+        "padding": "0px 0px 0px 4px",
+        "width": "auto"
+      }
+    },
+    "4957162ee3fc44dfb9319f70bdc653f7": {
+      "model_name": "ToggleButtonStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "7542f9753ac04d4aae310bc86f8f71fa": {
+      "model_name": "ToggleButtonModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "button_style": "primary",
+        "icon": "picture-o",
+        "layout": "IPY_MODEL_51403b45235b4a2283239f1406202ccd",
+        "style": "IPY_MODEL_4957162ee3fc44dfb9319f70bdc653f7",
+        "tooltip": "Open COG/STAC dataset"
+      }
+    },
+    "a125a8c5bb3c49748c608ee1924fc2e0": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "height": "auto",
+        "padding": "0px 0px 0px 4px",
+        "width": "auto"
+      }
+    },
+    "7514a0ff49964b218d1793ca12a3dcf8": {
+      "model_name": "ToggleButtonStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "fe145565b4e04405ab0d146c3adac669": {
+      "model_name": "ToggleButtonModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "button_style": "primary",
+        "icon": "search-plus",
+        "layout": "IPY_MODEL_a125a8c5bb3c49748c608ee1924fc2e0",
+        "style": "IPY_MODEL_7514a0ff49964b218d1793ca12a3dcf8",
+        "tooltip": "Search features in GeoJSON layer"
+      }
+    },
+    "2c661677aa044d3b86cd72b4c2f9ddfe": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "height": "auto",
+        "padding": "0px 0px 0px 4px",
+        "width": "auto"
+      }
+    },
+    "7d13aa3585284a5caac8ef1a60729891": {
+      "model_name": "ToggleButtonStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "5495945d1db54df1bfb687e5297ff0a1": {
+      "model_name": "ToggleButtonModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "button_style": "primary",
+        "icon": "table",
+        "layout": "IPY_MODEL_2c661677aa044d3b86cd72b4c2f9ddfe",
+        "style": "IPY_MODEL_7d13aa3585284a5caac8ef1a60729891",
+        "tooltip": "Open attribute table"
+      }
+    },
+    "635bfb0e534c460fb81ae7b2e47374ef": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "height": "auto",
+        "padding": "0px 0px 0px 4px",
+        "width": "auto"
+      }
+    },
+    "880a5b695e354b91893e3c401a1831a0": {
+      "model_name": "ToggleButtonStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "88a58627737c4c95ba72ac112c33d921": {
+      "model_name": "ToggleButtonModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "button_style": "primary",
+        "icon": "pencil-square-o",
+        "layout": "IPY_MODEL_635bfb0e534c460fb81ae7b2e47374ef",
+        "style": "IPY_MODEL_880a5b695e354b91893e3c401a1831a0",
+        "tooltip": "Create vector data"
+      }
+    },
+    "c0e6063807bc438a9f46a410858fe55f": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "height": "auto",
+        "padding": "0px 0px 0px 4px",
+        "width": "auto"
+      }
+    },
+    "33f621151a994ff78861118a588961da": {
+      "model_name": "ToggleButtonStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "14dcbfc586d947128d6abd6e9ec5ba83": {
+      "model_name": "ToggleButtonModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "button_style": "primary",
+        "icon": "stack-exchange",
+        "layout": "IPY_MODEL_c0e6063807bc438a9f46a410858fe55f",
+        "style": "IPY_MODEL_33f621151a994ff78861118a588961da",
+        "tooltip": "Discover STAC Catalog"
+      }
+    },
+    "d37e5b3e2f214d36b9f99955b307677c": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "height": "auto",
+        "padding": "0px 0px 0px 4px",
+        "width": "auto"
+      }
+    },
+    "8d3fd6c488ed4a0f80d0b7252218be01": {
+      "model_name": "ToggleButtonStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "500d156d47eb4a638dcc5fd938675121": {
+      "model_name": "ToggleButtonModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "button_style": "primary",
+        "icon": "plane",
+        "layout": "IPY_MODEL_d37e5b3e2f214d36b9f99955b307677c",
+        "style": "IPY_MODEL_8d3fd6c488ed4a0f80d0b7252218be01",
+        "tooltip": "Search OpenAerialMap"
+      }
+    },
+    "90289938a30a4bca904927629b701015": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "grid_gap": "1px 1px",
+        "grid_template_columns": "32px 32px 32px ",
+        "grid_template_rows": "32px 32px 32px 32px 32px 32px ",
+        "padding": "5px",
+        "width": "109px"
+      }
+    },
+    "c46d184ed24d45a7a9c3f8911061a821": {
+      "model_name": "GridBoxModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "children": [
+          "IPY_MODEL_eb57b9740ab14b1b943937cd8645c064",
+          "IPY_MODEL_919618d41c8d44e4943944c36960fea5",
+          "IPY_MODEL_332fe08a10484396922f05c0758779b2",
+          "IPY_MODEL_7e80ae66ccd4453794b6680ebbad8d07",
+          "IPY_MODEL_90352aefcd3045ed9b5c5878ff8f994d",
+          "IPY_MODEL_2a6f52e38ecd46f78545355c614bf2f7",
+          "IPY_MODEL_0a4e6e2416e94aaa9e759a37e7c0067c",
+          "IPY_MODEL_808f0383797941879011889c666b3282",
+          "IPY_MODEL_36bd03147d5d4f9fb12e19a967878e09",
+          "IPY_MODEL_69ec3e807e1e4bebbaedca74a5463430",
+          "IPY_MODEL_3d7a96ed01db4909a679668eff6bfa17",
+          "IPY_MODEL_fe29d9c7268b4f9ebc37a03babb98a8e",
+          "IPY_MODEL_7542f9753ac04d4aae310bc86f8f71fa",
+          "IPY_MODEL_fe145565b4e04405ab0d146c3adac669",
+          "IPY_MODEL_5495945d1db54df1bfb687e5297ff0a1",
+          "IPY_MODEL_88a58627737c4c95ba72ac112c33d921",
+          "IPY_MODEL_14dcbfc586d947128d6abd6e9ec5ba83",
+          "IPY_MODEL_500d156d47eb4a638dcc5fd938675121"
+        ],
+        "layout": "IPY_MODEL_90289938a30a4bca904927629b701015"
+      }
+    },
+    "2ca202c12b174c71a5e223b245fb5765": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "height": "28px",
+        "padding": "0px 0px 0px 4px",
+        "width": "28px"
+      }
+    },
+    "7024e9e0da144fdbb562f22bed259e7e": {
+      "model_name": "ToggleButtonStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "2c84cb8545424385aacae97f01d8eee8": {
+      "model_name": "ToggleButtonModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "icon": "wrench",
+        "layout": "IPY_MODEL_2ca202c12b174c71a5e223b245fb5765",
+        "style": "IPY_MODEL_7024e9e0da144fdbb562f22bed259e7e",
+        "tooltip": "Toolbar"
+      }
+    },
+    "4abada232db14d469c4d058bc9d35a95": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "height": "28px",
+        "width": "72px"
+      }
+    },
+    "10826777052a494982334de1eac2fdfb": {
+      "model_name": "ToggleButtonStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "51ff277a0f0b4124b919b18b3f7e9d6e": {
+      "model_name": "ToggleButtonModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "icon": "server",
+        "layout": "IPY_MODEL_4abada232db14d469c4d058bc9d35a95",
+        "style": "IPY_MODEL_10826777052a494982334de1eac2fdfb",
+        "tooltip": "Layers"
+      }
+    },
+    "81b6782e23f54e9abc8074d713b1b0b2": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "cc7ebc673c3041f2abb8bd53f02c9552": {
+      "model_name": "VBoxModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "children": [
+          "IPY_MODEL_2c84cb8545424385aacae97f01d8eee8"
+        ],
+        "layout": "IPY_MODEL_81b6782e23f54e9abc8074d713b1b0b2"
+      }
+    },
+    "71ecbfc053c84674aa5dadf6ac9d5d9f": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "27b716cec3ab4abca20717fc214e45de": {
+      "model_name": "HBoxModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "children": [
+          "IPY_MODEL_51ff277a0f0b4124b919b18b3f7e9d6e",
+          "IPY_MODEL_2c84cb8545424385aacae97f01d8eee8"
+        ],
+        "layout": "IPY_MODEL_71ecbfc053c84674aa5dadf6ac9d5d9f"
+      }
+    },
+    "a562ff730b974989b16a14213dc932b1": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "cdf1370406e04e658a22b88e5791ea40": {
+      "model_name": "VBoxModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "children": [
+          "IPY_MODEL_c46d184ed24d45a7a9c3f8911061a821"
+        ],
+        "layout": "IPY_MODEL_a562ff730b974989b16a14213dc932b1"
+      }
+    },
+    "bf25246fe17a4cd29eece12483367fec": {
+      "model_name": "EventModel",
+      "model_module": "ipyevents",
+      "model_module_version": "2.0.4",
+      "state": {
+        "_supported_key_events": [
+          "keydown",
+          "keyup"
+        ],
+        "_supported_mouse_events": [
+          "click",
+          "auxclick",
+          "dblclick",
+          "mouseenter",
+          "mouseleave",
+          "mousedown",
+          "mouseup",
+          "mousemove",
+          "wheel",
+          "contextmenu",
+          "dragstart",
+          "drag",
+          "dragend",
+          "dragenter",
+          "dragover",
+          "dragleave",
+          "drop"
+        ],
+        "_supported_touch_events": [
+          "touchstart",
+          "touchend",
+          "touchmove",
+          "touchcancel"
+        ],
+        "source": "IPY_MODEL_cc7ebc673c3041f2abb8bd53f02c9552",
+        "watched_events": [
+          "mouseenter",
+          "mouseleave"
+        ],
+        "xy": []
+      }
+    },
+    "f2effb3eeecc462e913dec87c3972dfb": {
+      "model_name": "LeafletWidgetControlModel",
+      "model_module": "jupyter-leaflet",
+      "model_module_version": "^0.20",
+      "state": {
+        "options": [
+          "position",
+          "transparent_bg"
+        ],
+        "position": "topright",
+        "widget": "IPY_MODEL_cc7ebc673c3041f2abb8bd53f02c9552"
+      }
+    },
+    "c352ec7490234734bf9f67e041f5bd41": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "height": "28px",
+        "padding": "0px 0px 0px 4px",
+        "width": "28px"
+      }
+    },
+    "8e83ac5c4f694aadb06b103476f821da": {
+      "model_name": "ToggleButtonStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "1d1b4cf0bab34b0096ff52f6cf456d47": {
+      "model_name": "ToggleButtonModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "icon": "server",
+        "layout": "IPY_MODEL_c352ec7490234734bf9f67e041f5bd41",
+        "style": "IPY_MODEL_8e83ac5c4f694aadb06b103476f821da",
+        "tooltip": "Layer Manager",
+        "value": true
+      }
+    },
+    "a7bcfdf8dae043b0bd21e77438c51c46": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "height": "28px",
+        "padding": "0px 0px 0px 4px",
+        "width": "28px"
+      }
+    },
+    "1a8779273d14465fb6c6c945ca97446f": {
+      "model_name": "ToggleButtonStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "7310047688b14f3b8b0e772cc07a68cf": {
+      "model_name": "ToggleButtonModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "button_style": "primary",
+        "icon": "times",
+        "layout": "IPY_MODEL_a7bcfdf8dae043b0bd21e77438c51c46",
+        "style": "IPY_MODEL_1a8779273d14465fb6c6c945ca97446f",
+        "tooltip": "Close the tool"
+      }
+    },
+    "61a1e39c70cc4cf99415692510a98453": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "94bee87fa7024afc90b08d091d0b92c7": {
+      "model_name": "HBoxModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "children": [
+          "IPY_MODEL_7310047688b14f3b8b0e772cc07a68cf",
+          "IPY_MODEL_1d1b4cf0bab34b0096ff52f6cf456d47"
+        ],
+        "layout": "IPY_MODEL_61a1e39c70cc4cf99415692510a98453"
+      }
+    },
+    "edf3e03c9a17408bb6b90c2bcc1b9c74": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "6328284678b544e7949353f9c849a60b": {
+      "model_name": "VBoxModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "children": [
+          "IPY_MODEL_b5bf384a170749048e440142495b944e",
+          "IPY_MODEL_2e803464a34c4561806c84364ad8d20b"
+        ],
+        "layout": "IPY_MODEL_edf3e03c9a17408bb6b90c2bcc1b9c74"
+      }
+    },
+    "98ebebf36f49461e8e4afa826ae5d997": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "9252b0693c4d49d0aada078286247d48": {
+      "model_name": "VBoxModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "children": [
+          "IPY_MODEL_94bee87fa7024afc90b08d091d0b92c7",
+          "IPY_MODEL_6328284678b544e7949353f9c849a60b"
+        ],
+        "layout": "IPY_MODEL_98ebebf36f49461e8e4afa826ae5d997"
+      }
+    },
+    "19c75760a21949fa90f20f5335c2b2df": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "height": "18px",
+        "padding": "0px 8px 25px 8px",
+        "width": "30ex"
+      }
+    },
+    "93c6196756ea46848fa22549017604d5": {
+      "model_name": "CheckboxStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "b5bf384a170749048e440142495b944e": {
+      "model_name": "CheckboxModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "description": "All layers on/off",
+        "indent": false,
+        "layout": "IPY_MODEL_19c75760a21949fa90f20f5335c2b2df",
+        "style": "IPY_MODEL_93c6196756ea46848fa22549017604d5"
+      }
+    },
+    "1d243973889b4c049cb24f75219d5550": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "height": "18px",
+        "width": "25ex"
+      }
+    },
+    "df25d1382b724f59a2314b4c41b0affe": {
+      "model_name": "CheckboxStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "761e85dfa1824bdaa829d4e5d3de18af": {
+      "model_name": "CheckboxModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "description": "OpenStreetMap",
+        "indent": false,
+        "layout": "IPY_MODEL_1d243973889b4c049cb24f75219d5550",
+        "style": "IPY_MODEL_df25d1382b724f59a2314b4c41b0affe",
+        "value": true
+      }
+    },
+    "d9de75dfb1244de88d0b0267c3093656": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "width": "80px"
+      }
+    },
+    "dbd732ab5b8d46bfa00d3e79de894b29": {
+      "model_name": "SliderStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "8e33e5114bc945239845a3c3f10d2f0e": {
+      "model_name": "FloatSliderModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "layout": "IPY_MODEL_d9de75dfb1244de88d0b0267c3093656",
+        "max": 1.0,
+        "readout": false,
+        "step": 0.01,
+        "style": "IPY_MODEL_dbd732ab5b8d46bfa00d3e79de894b29",
+        "value": 1.0
+      }
+    },
+    "e53dc4e9901a40d2aa5e74f1928c852e": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "height": "25px",
+        "padding": "0px 0px 0px 0px",
+        "width": "25px"
+      }
+    },
+    "ccb0ef482cd749a3a3dfdec27db3ede2": {
+      "model_name": "ButtonStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "934f8bbb9a0c4646aa00c59c7d34e9ff": {
+      "model_name": "ButtonModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "icon": "gear",
+        "layout": "IPY_MODEL_e53dc4e9901a40d2aa5e74f1928c852e",
+        "style": "IPY_MODEL_ccb0ef482cd749a3a3dfdec27db3ede2",
+        "tooltip": "OpenStreetMap"
+      }
+    },
+    "2a98f87b16c8432ea6bd18cad46e4b03": {
+      "model_name": "LinkModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "source": [
+          "IPY_MODEL_761e85dfa1824bdaa829d4e5d3de18af",
+          "value"
+        ],
+        "target": [
+          "IPY_MODEL_c00ba5581fd64e7282244216a5bb5172",
+          "visible"
+        ]
+      }
+    },
+    "32b480724732435bb5ce5d21a64d2397": {
+      "model_name": "DirectionalLinkModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "source": [
+          "IPY_MODEL_8e33e5114bc945239845a3c3f10d2f0e",
+          "value"
+        ],
+        "target": [
+          "IPY_MODEL_c00ba5581fd64e7282244216a5bb5172",
+          "opacity"
+        ]
+      }
+    },
+    "5f8167ae6e6647819f4401ddab64eee8": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "padding": "0px 8px 0px 8px"
+      }
+    },
+    "2e803464a34c4561806c84364ad8d20b": {
+      "model_name": "HBoxModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "children": [
+          "IPY_MODEL_761e85dfa1824bdaa829d4e5d3de18af",
+          "IPY_MODEL_934f8bbb9a0c4646aa00c59c7d34e9ff",
+          "IPY_MODEL_8e33e5114bc945239845a3c3f10d2f0e"
+        ],
+        "layout": "IPY_MODEL_5f8167ae6e6647819f4401ddab64eee8"
+      }
+    },
+    "cba10717af0c489aa4cfeea438f36d90": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "height": "28px",
+        "padding": "0px 0px 0px 4px",
+        "width": "28px"
+      }
+    },
+    "41c1730be1c446a8841b8157dd4957b4": {
+      "model_name": "ToggleButtonStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "0be2538e3c014769bd5e0ef9e28c3def": {
+      "model_name": "ToggleButtonModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "icon": "info",
+        "layout": "IPY_MODEL_cba10717af0c489aa4cfeea438f36d90",
+        "style": "IPY_MODEL_41c1730be1c446a8841b8157dd4957b4",
+        "tooltip": "Toolbar",
+        "value": true
+      }
+    },
+    "de3dc108009a4181b042746b9bd68576": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "height": "28px",
+        "padding": "0px 0px 0px 4px",
+        "width": "28px"
+      }
+    },
+    "606f3f070d7348658080c10819febd3c": {
+      "model_name": "ToggleButtonStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "e6d39be5240544fdbebe1d9e58de89ce": {
+      "model_name": "ToggleButtonModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "icon": "times",
+        "layout": "IPY_MODEL_de3dc108009a4181b042746b9bd68576",
+        "style": "IPY_MODEL_606f3f070d7348658080c10819febd3c",
+        "tooltip": "Close the tool"
+      }
+    },
+    "b3255c59cd3d4d85a85eb13bfd139f82": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "margin": "0px 10px 0px 10px",
+        "max_height": "250px",
+        "max_width": "250px"
+      }
+    },
+    "697c4ebcdfb14e8ea83214aa00c162fb": {
+      "model_name": "HTMLStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "8dfbc63bcbd64d18a7fd0f333d8b020b": {
+      "model_name": "HTMLModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "layout": "IPY_MODEL_b3255c59cd3d4d85a85eb13bfd139f82",
+        "style": "IPY_MODEL_697c4ebcdfb14e8ea83214aa00c162fb"
+      }
+    },
+    "c530c9a14b2449789033ef4c8a9aac32": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "240dd3fb69274a78b4c66f381e1ee509": {
+      "model_name": "HBoxModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "children": [
+          "IPY_MODEL_0be2538e3c014769bd5e0ef9e28c3def",
+          "IPY_MODEL_e6d39be5240544fdbebe1d9e58de89ce"
+        ],
+        "layout": "IPY_MODEL_c530c9a14b2449789033ef4c8a9aac32"
+      }
+    },
+    "4576f93dc64d4678bce30d75440d91ce": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "eb87b7fdd04147ae99f992d60ec56ecd": {
+      "model_name": "VBoxModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "children": [
+          "IPY_MODEL_240dd3fb69274a78b4c66f381e1ee509",
+          "IPY_MODEL_8dfbc63bcbd64d18a7fd0f333d8b020b"
+        ],
+        "layout": "IPY_MODEL_4576f93dc64d4678bce30d75440d91ce"
+      }
+    },
+    "bd6215ffc9854678994a2c6b51b36762": {
+      "model_name": "LeafletWidgetControlModel",
+      "model_module": "jupyter-leaflet",
+      "model_module_version": "^0.20",
+      "state": {
+        "options": [
+          "position",
+          "transparent_bg"
+        ],
+        "position": "bottomright",
+        "widget": "IPY_MODEL_eb87b7fdd04147ae99f992d60ec56ecd"
+      }
+    },
+    "64f74c47882c46d0a5b752c4cc0267c8": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "height": "28px",
+        "padding": "0px 0px 0px 4px",
+        "width": "28px"
+      }
+    },
+    "57438f2ea909415fa52df3d45ba7a1c5": {
+      "model_name": "ToggleButtonStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "f4df214249084edb996b0613ba5f6836": {
+      "model_name": "ToggleButtonModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "icon": "server",
+        "layout": "IPY_MODEL_64f74c47882c46d0a5b752c4cc0267c8",
+        "style": "IPY_MODEL_57438f2ea909415fa52df3d45ba7a1c5",
+        "tooltip": "Layer Manager",
+        "value": true
+      }
+    },
+    "b570b7dbc70143e09db467f164b3e08e": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "height": "28px",
+        "padding": "0px 0px 0px 4px",
+        "width": "28px"
+      }
+    },
+    "91f9c8c100874e3c8c5bbbd20a4dfb14": {
+      "model_name": "ToggleButtonStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "cda6b908de5f4adf97908f0d508a2412": {
+      "model_name": "ToggleButtonModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "button_style": "primary",
+        "icon": "times",
+        "layout": "IPY_MODEL_b570b7dbc70143e09db467f164b3e08e",
+        "style": "IPY_MODEL_91f9c8c100874e3c8c5bbbd20a4dfb14",
+        "tooltip": "Close the tool"
+      }
+    },
+    "ebf9c0480cca4ac5bacbaf1955c6d3d0": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "ea64ae80575b4931a73c9d442221c7cd": {
+      "model_name": "HBoxModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "children": [
+          "IPY_MODEL_cda6b908de5f4adf97908f0d508a2412",
+          "IPY_MODEL_f4df214249084edb996b0613ba5f6836"
+        ],
+        "layout": "IPY_MODEL_ebf9c0480cca4ac5bacbaf1955c6d3d0"
+      }
+    },
+    "8cb4cb16d7bd4a3391284d5a93c0898b": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "10223294ebee437cad917f75f23e6969": {
+      "model_name": "VBoxModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "children": [
+          "IPY_MODEL_2d3b05e03a0349fcbc45fc86f95b41d1",
+          "IPY_MODEL_6a664bba854a4bf6bb352f5205606f6d"
+        ],
+        "layout": "IPY_MODEL_8cb4cb16d7bd4a3391284d5a93c0898b"
+      }
+    },
+    "7375b720dcc441f8981b6472531bbbf9": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "545946eaa19e4b24b2c55e8851cfd214": {
+      "model_name": "VBoxModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "children": [
+          "IPY_MODEL_ea64ae80575b4931a73c9d442221c7cd",
+          "IPY_MODEL_10223294ebee437cad917f75f23e6969"
+        ],
+        "layout": "IPY_MODEL_7375b720dcc441f8981b6472531bbbf9"
+      }
+    },
+    "c32a33b0953b4cd78e341a8f31544cc9": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "height": "18px",
+        "padding": "0px 8px 25px 8px",
+        "width": "30ex"
+      }
+    },
+    "bb506fab2d1a448fb9886cf564057af0": {
+      "model_name": "CheckboxStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "2d3b05e03a0349fcbc45fc86f95b41d1": {
+      "model_name": "CheckboxModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "description": "All layers on/off",
+        "indent": false,
+        "layout": "IPY_MODEL_c32a33b0953b4cd78e341a8f31544cc9",
+        "style": "IPY_MODEL_bb506fab2d1a448fb9886cf564057af0"
+      }
+    },
+    "dcd890126b534b6e9a3e3744ac0adb49": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "height": "18px",
+        "width": "25ex"
+      }
+    },
+    "42fb1e8d285e46ac8c4a618a1381a2f5": {
+      "model_name": "CheckboxStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "a538bdf75597463d8ed18e42fbbfdc71": {
+      "model_name": "CheckboxModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "description": "OpenStreetMap",
+        "indent": false,
+        "layout": "IPY_MODEL_dcd890126b534b6e9a3e3744ac0adb49",
+        "style": "IPY_MODEL_42fb1e8d285e46ac8c4a618a1381a2f5",
+        "value": true
+      }
+    },
+    "04f559433a1b4485a0eb0e3e9e06e66e": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "width": "80px"
+      }
+    },
+    "e5d4c3559fbd4f3aa3346c7e098ab616": {
+      "model_name": "SliderStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "6204e5c966ca4f9598f5e765baa41b8f": {
+      "model_name": "FloatSliderModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "layout": "IPY_MODEL_04f559433a1b4485a0eb0e3e9e06e66e",
+        "max": 1.0,
+        "readout": false,
+        "step": 0.01,
+        "style": "IPY_MODEL_e5d4c3559fbd4f3aa3346c7e098ab616",
+        "value": 1.0
+      }
+    },
+    "605bfd68b86b493384955c034f532367": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "height": "25px",
+        "padding": "0px 0px 0px 0px",
+        "width": "25px"
+      }
+    },
+    "f390ffd54f6b4a0f9102b142d6e41f7e": {
+      "model_name": "ButtonStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "0576093e316c4b34afbffd115b66f851": {
+      "model_name": "ButtonModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "icon": "gear",
+        "layout": "IPY_MODEL_605bfd68b86b493384955c034f532367",
+        "style": "IPY_MODEL_f390ffd54f6b4a0f9102b142d6e41f7e",
+        "tooltip": "OpenStreetMap"
+      }
+    },
+    "0ea5a51d1723407ca01fce62f9a0b05f": {
+      "model_name": "LinkModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "source": [
+          "IPY_MODEL_a538bdf75597463d8ed18e42fbbfdc71",
+          "value"
+        ],
+        "target": [
+          "IPY_MODEL_c00ba5581fd64e7282244216a5bb5172",
+          "visible"
+        ]
+      }
+    },
+    "024127265d774c15ab8c9ce29f622e01": {
+      "model_name": "DirectionalLinkModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "source": [
+          "IPY_MODEL_6204e5c966ca4f9598f5e765baa41b8f",
+          "value"
+        ],
+        "target": [
+          "IPY_MODEL_c00ba5581fd64e7282244216a5bb5172",
+          "opacity"
+        ]
+      }
+    },
+    "8ebc38c049a743479bca59ef4b47d013": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "padding": "0px 8px 0px 8px"
+      }
+    },
+    "6a664bba854a4bf6bb352f5205606f6d": {
+      "model_name": "HBoxModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "children": [
+          "IPY_MODEL_a538bdf75597463d8ed18e42fbbfdc71",
+          "IPY_MODEL_0576093e316c4b34afbffd115b66f851",
+          "IPY_MODEL_6204e5c966ca4f9598f5e765baa41b8f"
+        ],
+        "layout": "IPY_MODEL_8ebc38c049a743479bca59ef4b47d013"
+      }
+    },
+    "1bff01f13dfa4cc0a492e8f553464c54": {
+      "model_name": "LeafletGeoJSONModel",
+      "model_module": "jupyter-leaflet",
+      "model_module_version": "^0.20",
+      "state": {
+        "data": {
+          "type": "FeatureCollection",
+          "features": [
+            {
+              "id": "0",
+              "type": "Feature",
+              "properties": {
+                "pno": 1020924736,
+                "cvr": 37253324,
+                "company": "Develop Holding ApS",
+                "name": "Develop Holding ApS",
+                "address": "Knudsgade 33",
+                "zipcode": "8700",
+                "city": "Horsens",
+                "startdate": "25/11 - 2015",
+                "enddate": null,
+                "employees": null,
+                "industrycode": 649990,
+                "industrydesc": "Anden finansiel formidling i.a.n.",
+                "adgangs_uuid": "0a3f508f-adee-32b8-e044-0003ba298018",
+                "lon": 9.8784785,
+                "lat": 55.86313781,
+                "style": {
+                  "weight": 1
+                }
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  9.878478500000002,
+                  55.86313781
+                ]
+              },
+              "bbox": [
+                9.878478500000002,
+                55.86313781,
+                9.878478500000002,
+                55.86313781
+              ]
+            },
+            {
+              "id": "1",
+              "type": "Feature",
+              "properties": {
+                "pno": 1026517865,
+                "cvr": 41886722,
+                "company": "Brovst Venstrev\u00e6lgerforening",
+                "name": "Brovst Venstrev\u00e6lgerforening",
+                "address": "Margretheg\u00e5rdsvej 7",
+                "zipcode": "9460",
+                "city": "Brovst",
+                "startdate": "26/11 - 2020",
+                "enddate": null,
+                "employees": null,
+                "industrycode": 949900,
+                "industrydesc": "Andre organisationers og foreningers aktiviteter i.a.n.",
+                "adgangs_uuid": "0a3f5099-2d52-32b8-e044-0003ba298018",
+                "lon": 9.46476763,
+                "lat": 57.13261015,
+                "style": {
+                  "weight": 1
+                }
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  9.46476763,
+                  57.13261015
+                ]
+              },
+              "bbox": [
+                9.46476763,
+                57.13261015,
+                9.46476763,
+                57.13261015
+              ]
+            },
+            {
+              "id": "2",
+              "type": "Feature",
+              "properties": {
+                "pno": 1006784065,
+                "cvr": 73336015,
+                "company": "B. C. RENG\u00d8RING A/S",
+                "name": "B. C. RENG\u00d8RING A/S",
+                "address": " 12",
+                "zipcode": "9999",
+                "city": "Ukendt",
+                "startdate": "15/09 - 1983",
+                "enddate": "31/12 - 1988",
+                "employees": null,
+                "industrycode": 980000,
+                "industrydesc": "Uoplyst",
+                "adgangs_uuid": "f28ce9a8-6248-4981-a62e-bdb39ec3ffc9",
+                "lon": 10.5906874,
+                "lat": 57.71445447,
+                "style": {
+                  "weight": 1
+                }
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  10.5906874,
+                  57.71445447000001
+                ]
+              },
+              "bbox": [
+                10.5906874,
+                57.71445447000001,
+                10.5906874,
+                57.71445447000001
+              ]
+            },
+            {
+              "id": "3",
+              "type": "Feature",
+              "properties": {
+                "pno": 1003182615,
+                "cvr": 73336015,
+                "company": "B. C. RENG\u00d8RING A/S",
+                "name": "B C RENG\u00d8RING A/S lager",
+                "address": "H\u00f8rsvinget 7",
+                "zipcode": "2630",
+                "city": "Taastrup",
+                "startdate": "01/01 - 1989",
+                "enddate": null,
+                "employees": "0",
+                "industrycode": 812300,
+                "industrydesc": "Anden reng\u00f8ring",
+                "adgangs_uuid": "0a3f507d-01cb-32b8-e044-0003ba298018",
+                "lon": 12.30420013,
+                "lat": 55.66078384,
+                "style": {
+                  "weight": 1
+                }
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  12.30420013,
+                  55.66078383999999
+                ]
+              },
+              "bbox": [
+                12.30420013,
+                55.66078383999999,
+                12.30420013,
+                55.66078383999999
+              ]
+            },
+            {
+              "id": "4",
+              "type": "Feature",
+              "properties": {
+                "pno": 1003182603,
+                "cvr": 73336015,
+                "company": "B. C. RENG\u00d8RING A/S",
+                "name": "B C RENG\u00d8RING A/S",
+                "address": "Grandl\u00f8se Kirkevej 12",
+                "zipcode": "4300",
+                "city": "Holb\u00e6k",
+                "startdate": "01/01 - 1989",
+                "enddate": null,
+                "employees": "10-19",
+                "industrycode": 812300,
+                "industrydesc": "Anden reng\u00f8ring",
+                "adgangs_uuid": "0a3f5083-2958-32b8-e044-0003ba298018",
+                "lon": 11.72762346,
+                "lat": 55.69017159,
+                "style": {
+                  "weight": 1
+                }
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  11.727623460000002,
+                  55.69017158999999
+                ]
+              },
+              "bbox": [
+                11.727623460000002,
+                55.69017158999999,
+                11.727623460000002,
+                55.69017158999999
+              ]
+            },
+            {
+              "id": "5",
+              "type": "Feature",
+              "properties": {
+                "pno": 1005427255,
+                "cvr": 11669239,
+                "company": "SKOVRIDER MOGENS ANDERSEN OG HUSTRU ELIN MICHAELA ANDERSENS FOND",
+                "name": "SKOVRIDER MOGENS ANDERSEN OG HUSTRU ELIN MICHAELA ANDERSENS FOND",
+                "address": "Industriv\u00e6nget 22",
+                "zipcode": "3400",
+                "city": "Hiller\u00f8d",
+                "startdate": "01/01 - 1901",
+                "enddate": null,
+                "employees": null,
+                "industrycode": 889910,
+                "industrydesc": "St\u00f8tteaktiviteter relateret til sygdomsbek\u00e6mpende, sociale og velg\u00f8rende form\u00e5l",
+                "adgangs_uuid": "0a3f5080-0600-32b8-e044-0003ba298018",
+                "lon": 12.27716276,
+                "lat": 55.93187364,
+                "style": {
+                  "weight": 1
+                }
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  12.27716276,
+                  55.93187364
+                ]
+              },
+              "bbox": [
+                12.27716276,
+                55.93187364,
+                12.27716276,
+                55.93187364
+              ]
+            },
+            {
+              "id": "6",
+              "type": "Feature",
+              "properties": {
+                "pno": 1009766932,
+                "cvr": 27070825,
+                "company": "ENTERACTION v/Palle Frank Jensen",
+                "name": "ENTERACTION v/Palle Frank Jensen",
+                "address": "L\u00e6s\u00f8vej 27",
+                "zipcode": "4700",
+                "city": "N\u00e6stved",
+                "startdate": "01/02 - 2003",
+                "enddate": null,
+                "employees": "0",
+                "industrycode": 621000,
+                "industrydesc": "Computerprogrammering",
+                "adgangs_uuid": "0a3f5086-23ed-32b8-e044-0003ba298018",
+                "lon": 11.7439356,
+                "lat": 55.2108301,
+                "style": {
+                  "weight": 1
+                }
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  11.7439356,
+                  55.2108301
+                ]
+              },
+              "bbox": [
+                11.7439356,
+                55.2108301,
+                11.7439356,
+                55.2108301
+              ]
+            },
+            {
+              "id": "7",
+              "type": "Feature",
+              "properties": {
+                "pno": 1023910027,
+                "cvr": 39823373,
+                "company": "Wied Holding ApS",
+                "name": "Wied Holding ApS",
+                "address": "Agerbo 19",
+                "zipcode": "2300",
+                "city": "K\u00f8benhavn S",
+                "startdate": "29/08 - 2018",
+                "enddate": null,
+                "employees": null,
+                "industrycode": 642120,
+                "industrydesc": "Ikke-finansielle holdingselskaber",
+                "adgangs_uuid": "0a3f507a-373f-32b8-e044-0003ba298018",
+                "lon": 12.59056683,
+                "lat": 55.64396941,
+                "style": {
+                  "weight": 1
+                }
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  12.59056683,
+                  55.64396941
+                ]
+              },
+              "bbox": [
+                12.59056683,
+                55.64396941,
+                12.59056683,
+                55.64396941
+              ]
+            },
+            {
+              "id": "8",
+              "type": "Feature",
+              "properties": {
+                "pno": 1014802092,
+                "cvr": 25609999,
+                "company": "P. Andersen",
+                "name": "wefind v/Peter Andersen",
+                "address": "Gothersgade 43, 5. tv.",
+                "zipcode": "1123",
+                "city": "K\u00f8benhavn K",
+                "startdate": "25/08 - 2008",
+                "enddate": "31/12 - 2010",
+                "employees": null,
+                "industrycode": 702200,
+                "industrydesc": "Virksomhedsr\u00e5dgivning og anden r\u00e5dgivning om driftsledelse",
+                "adgangs_uuid": "0a3f507a-7b71-32b8-e044-0003ba298018",
+                "lon": 12.58145386,
+                "lat": 55.68237033,
+                "style": {
+                  "weight": 1
+                }
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  12.58145386,
+                  55.68237033
+                ]
+              },
+              "bbox": [
+                12.58145386,
+                55.68237033,
+                12.58145386,
+                55.68237033
+              ]
+            },
+            {
+              "id": "9",
+              "type": "Feature",
+              "properties": {
+                "pno": 1007579973,
+                "cvr": 25609999,
+                "company": "P. Andersen",
+                "name": "Surf-Ace v/Peter Andersen",
+                "address": "Pilestr\u00e6de 35, 3. 1.",
+                "zipcode": "1112",
+                "city": "K\u00f8benhavn K",
+                "startdate": "01/09 - 2000",
+                "enddate": "31/12 - 2005",
+                "employees": "0",
+                "industrycode": 524230,
+                "industrydesc": "Herre- og damet\u00f8jsforretninger (blandet)",
+                "adgangs_uuid": "c25ec678-331f-4364-a1e5-c7624e37838f",
+                "lon": 12.58014327,
+                "lat": 55.68078702,
+                "style": {
+                  "weight": 1
+                }
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  12.58014327,
+                  55.680787020000004
+                ]
+              },
+              "bbox": [
+                12.58014327,
+                55.680787020000004,
+                12.58014327,
+                55.680787020000004
+              ]
+            },
+            {
+              "id": "10",
+              "type": "Feature",
+              "properties": {
+                "pno": 1031960955,
+                "cvr": 25609999,
+                "company": "P. Andersen",
+                "name": "P. Andersen",
+                "address": "Dronningg\u00e5rds Alle 40A",
+                "zipcode": "2840",
+                "city": "Holte",
+                "startdate": "17/11 - 2025",
+                "enddate": null,
+                "employees": null,
+                "industrycode": 702000,
+                "industrydesc": "Virksomhedsr\u00e5dgivning og anden ledelsesr\u00e5dgivning",
+                "adgangs_uuid": "0a3f507d-a43b-32b8-e044-0003ba298018",
+                "lon": 12.46049345,
+                "lat": 55.81165013,
+                "style": {
+                  "weight": 1
+                }
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  12.460493450000001,
+                  55.81165013
+                ]
+              },
+              "bbox": [
+                12.460493450000001,
+                55.81165013,
+                12.460493450000001,
+                55.81165013
+              ]
+            },
+            {
+              "id": "11",
+              "type": "Feature",
+              "properties": {
+                "pno": 1026697871,
+                "cvr": 42034274,
+                "company": "Kanvi",
+                "name": "Kanvi",
+                "address": "Spurvevej 4",
+                "zipcode": "6040",
+                "city": "Egtved",
+                "startdate": "18/01 - 2021",
+                "enddate": null,
+                "employees": null,
+                "industrycode": 749100,
+                "industrydesc": "Patentbureauers aktiviteter og tjenesteydelser i forbindelse med markedsf\u00f8ring",
+                "adgangs_uuid": "0a3f508e-e971-32b8-e044-0003ba298018",
+                "lon": 9.40691023,
+                "lat": 55.56035705,
+                "style": {
+                  "weight": 1
+                }
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  9.40691023,
+                  55.56035705000001
+                ]
+              },
+              "bbox": [
+                9.40691023,
+                55.56035705000001,
+                9.40691023,
+                55.56035705000001
+              ]
+            },
+            {
+              "id": "12",
+              "type": "Feature",
+              "properties": {
+                "pno": 1022357960,
+                "cvr": 38565559,
+                "company": "Aarhus Kampsport",
+                "name": "Aarhus Kampsport",
+                "address": "Elmehaven 61",
+                "zipcode": "8520",
+                "city": "Lystrup",
+                "startdate": "11/04 - 2017",
+                "enddate": null,
+                "employees": null,
+                "industrycode": 949900,
+                "industrydesc": "Andre organisationers og foreningers aktiviteter i.a.n.",
+                "adgangs_uuid": "0a3f5096-154b-32b8-e044-0003ba298018",
+                "lon": 10.25223666,
+                "lat": 56.24261817,
+                "style": {
+                  "weight": 1
+                }
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  10.25223666,
+                  56.24261817
+                ]
+              },
+              "bbox": [
+                10.25223666,
+                56.24261817,
+                10.25223666,
+                56.24261817
+              ]
+            },
+            {
+              "id": "13",
+              "type": "Feature",
+              "properties": {
+                "pno": 1018286927,
+                "cvr": 35046070,
+                "company": "F. GRUNNET HOLDING A/S",
+                "name": "F. GRUNNET HOLDING A/S",
+                "address": "H\u00f8jbro Plads 6",
+                "zipcode": "1200",
+                "city": "K\u00f8benhavn K",
+                "startdate": "13/02 - 2013",
+                "enddate": null,
+                "employees": null,
+                "industrycode": 649990,
+                "industrydesc": "Anden finansiel formidling i.a.n.",
+                "adgangs_uuid": "0a3f507a-9619-32b8-e044-0003ba298018",
+                "lon": 12.57946959,
+                "lat": 55.6782388,
+                "style": {
+                  "weight": 1
+                }
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  12.579469589999999,
+                  55.67823879999998
+                ]
+              },
+              "bbox": [
+                12.579469589999999,
+                55.67823879999998,
+                12.579469589999999,
+                55.67823879999998
+              ]
+            },
+            {
+              "id": "14",
+              "type": "Feature",
+              "properties": {
+                "pno": 1030961613,
+                "cvr": 45266729,
+                "company": "Duynie Feed Sverige AB",
+                "name": "Duynie Feed Sverige AB",
+                "address": "Ryg\u00e5rds All\u00e9 104",
+                "zipcode": "2900",
+                "city": "Hellerup",
+                "startdate": "01/01 - 2025",
+                "enddate": null,
+                "employees": null,
+                "industrycode": 109100,
+                "industrydesc": "Fremstilling af f\u00e6rdige foderblandinger til landbrugsdyr",
+                "adgangs_uuid": "0a3f507a-e840-32b8-e044-0003ba298018",
+                "lon": 12.5593647,
+                "lat": 55.72263028,
+                "style": {
+                  "weight": 1
+                }
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  12.5593647,
+                  55.72263027999999
+                ]
+              },
+              "bbox": [
+                12.5593647,
+                55.72263027999999,
+                12.5593647,
+                55.72263027999999
+              ]
+            },
+            {
+              "id": "15",
+              "type": "Feature",
+              "properties": {
+                "pno": 1018049615,
+                "cvr": 32077420,
+                "company": "KERTEMINDE FORSYNING - RENOVATION A/S",
+                "name": "Kerteminde Komposteringsplads",
+                "address": "Hindsholmvej 279A",
+                "zipcode": "5300",
+                "city": "Kerteminde",
+                "startdate": "09/11 - 2012",
+                "enddate": "10/06 - 2016",
+                "employees": null,
+                "industrycode": 381100,
+                "industrydesc": "Indsamling af ikke-farligt affald",
+                "adgangs_uuid": "0a3f5088-6736-32b8-e044-0003ba298018",
+                "lon": 10.66663139,
+                "lat": 55.47382564,
+                "style": {
+                  "weight": 1
+                }
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  10.66663139,
+                  55.47382564000001
+                ]
+              },
+              "bbox": [
+                10.66663139,
+                55.47382564000001,
+                10.66663139,
+                55.47382564000001
+              ]
+            },
+            {
+              "id": "16",
+              "type": "Feature",
+              "properties": {
+                "pno": 1015141537,
+                "cvr": 32077420,
+                "company": "KERTEMINDE FORSYNING - RENOVATION A/S",
+                "name": "KERTEMINDE FORSYNING - RENOVATION A/S",
+                "address": "Kohaven 12",
+                "zipcode": "5300",
+                "city": "Kerteminde",
+                "startdate": "11/03 - 2009",
+                "enddate": null,
+                "employees": null,
+                "industrycode": 381100,
+                "industrydesc": "Indsamling af ikke-farligt affald",
+                "adgangs_uuid": "0a3f5088-69ec-32b8-e044-0003ba298018",
+                "lon": 10.64976605,
+                "lat": 55.45768553,
+                "style": {
+                  "weight": 1
+                }
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  10.64976605,
+                  55.457685530000006
+                ]
+              },
+              "bbox": [
+                10.64976605,
+                55.457685530000006,
+                10.64976605,
+                55.457685530000006
+              ]
+            },
+            {
+              "id": "17",
+              "type": "Feature",
+              "properties": {
+                "pno": 1015556427,
+                "cvr": 32077420,
+                "company": "KERTEMINDE FORSYNING - RENOVATION A/S",
+                "name": "Munkebo Genbrugsplads",
+                "address": "Garb\u00e6ksvej 6",
+                "zipcode": "5330",
+                "city": "Munkebo",
+                "startdate": "01/10 - 2009",
+                "enddate": null,
+                "employees": null,
+                "industrycode": 381100,
+                "industrydesc": "Indsamling af ikke-farligt affald",
+                "adgangs_uuid": "0a3f5088-b7f6-32b8-e044-0003ba298018",
+                "lon": 10.54139503,
+                "lat": 55.45725832,
+                "style": {
+                  "weight": 1
+                }
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  10.54139503,
+                  55.457258319999994
+                ]
+              },
+              "bbox": [
+                10.54139503,
+                55.457258319999994,
+                10.54139503,
+                55.457258319999994
+              ]
+            },
+            {
+              "id": "18",
+              "type": "Feature",
+              "properties": {
+                "pno": 1015556443,
+                "cvr": 32077420,
+                "company": "KERTEMINDE FORSYNING - RENOVATION A/S",
+                "name": "Kerteminde Genbrugsplads",
+                "address": "Hindsholmvej 279",
+                "zipcode": "5300",
+                "city": "Kerteminde",
+                "startdate": "01/10 - 2009",
+                "enddate": null,
+                "employees": null,
+                "industrycode": 381100,
+                "industrydesc": "Indsamling af ikke-farligt affald",
+                "adgangs_uuid": "0a3f5088-6736-32b8-e044-0003ba298018",
+                "lon": 10.66663139,
+                "lat": 55.47382564,
+                "style": {
+                  "weight": 1
+                }
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  10.66663139,
+                  55.47382564000001
+                ]
+              },
+              "bbox": [
+                10.66663139,
+                55.47382564000001,
+                10.66663139,
+                55.47382564000001
+              ]
+            },
+            {
+              "id": "19",
+              "type": "Feature",
+              "properties": {
+                "pno": 1015556435,
+                "cvr": 32077420,
+                "company": "KERTEMINDE FORSYNING - RENOVATION A/S",
+                "name": "Langeskov Genbrugsplads",
+                "address": "Mariesmindevej 2",
+                "zipcode": "5550",
+                "city": "Langeskov",
+                "startdate": "01/10 - 2009",
+                "enddate": null,
+                "employees": null,
+                "industrycode": 381100,
+                "industrydesc": "Indsamling af ikke-farligt affald",
+                "adgangs_uuid": "0a3f5088-7fe2-32b8-e044-0003ba298018",
+                "lon": 10.58033184,
+                "lat": 55.3474396,
+                "style": {
+                  "weight": 1
+                }
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  10.58033184,
+                  55.347439599999994
+                ]
+              },
+              "bbox": [
+                10.58033184,
+                55.347439599999994,
+                10.58033184,
+                55.347439599999994
+              ]
+            },
+            {
+              "id": "20",
+              "type": "Feature",
+              "properties": {
+                "pno": 1023243357,
+                "cvr": 32077420,
+                "company": "KERTEMINDE FORSYNING - RENOVATION A/S",
+                "name": "Komposteringsplads",
+                "address": "Hindsholmvej 279",
+                "zipcode": "5300",
+                "city": "Kerteminde",
+                "startdate": "01/09 - 2017",
+                "enddate": null,
+                "employees": null,
+                "industrycode": 383200,
+                "industrydesc": "Deponering eller permanent oplagring",
+                "adgangs_uuid": "0a3f5088-6736-32b8-e044-0003ba298018",
+                "lon": 10.66663139,
+                "lat": 55.47382564,
+                "style": {
+                  "weight": 1
+                }
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  10.66663139,
+                  55.47382564000001
+                ]
+              },
+              "bbox": [
+                10.66663139,
+                55.47382564000001,
+                10.66663139,
+                55.47382564000001
+              ]
+            },
+            {
+              "id": "21",
+              "type": "Feature",
+              "properties": {
+                "pno": 1019310449,
+                "cvr": 35831274,
+                "company": "RENOMA ApS",
+                "name": "RENOMA ApS",
+                "address": "Bygaden 42",
+                "zipcode": "8700",
+                "city": "Horsens",
+                "startdate": "15/04 - 2014",
+                "enddate": null,
+                "employees": "4",
+                "industrycode": 433200,
+                "industrydesc": "T\u00f8mrer- og bygningssnedkeraktiviteter",
+                "adgangs_uuid": "0a3f508f-8feb-32b8-e044-0003ba298018",
+                "lon": 9.91624158,
+                "lat": 55.8720434,
+                "style": {
+                  "weight": 1
+                }
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  9.91624158,
+                  55.872043399999995
+                ]
+              },
+              "bbox": [
+                9.91624158,
+                55.872043399999995,
+                9.91624158,
+                55.872043399999995
+              ]
+            },
+            {
+              "id": "22",
+              "type": "Feature",
+              "properties": {
+                "pno": 1030459535,
+                "cvr": 44911272,
+                "company": "DJ Boliginvest ApS",
+                "name": "DJ Boliginvest ApS",
+                "address": "Sundv\u00e6nget 14",
+                "zipcode": "6400",
+                "city": "S\u00f8nderborg",
+                "startdate": "20/06 - 2024",
+                "enddate": null,
+                "employees": null,
+                "industrycode": 681100,
+                "industrydesc": "K\u00f8b og salg af egen fast ejendom",
+                "adgangs_uuid": "0a3f508c-8841-32b8-e044-0003ba298018",
+                "lon": 9.761843,
+                "lat": 54.91823835,
+                "style": {
+                  "weight": 1
+                }
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  9.761843,
+                  54.91823835
+                ]
+              },
+              "bbox": [
+                9.761843,
+                54.91823835,
+                9.761843,
+                54.91823835
+              ]
+            },
+            {
+              "id": "23",
+              "type": "Feature",
+              "properties": {
+                "pno": 1026260856,
+                "cvr": 41676930,
+                "company": "NASS, B\u00f8rkop Holding ApS",
+                "name": "NASS, B\u00f8rkop Holding ApS",
+                "address": "Borgg\u00e5rdsparken 26",
+                "zipcode": "7080",
+                "city": "B\u00f8rkop",
+                "startdate": "15/09 - 2020",
+                "enddate": null,
+                "employees": null,
+                "industrycode": 642110,
+                "industrydesc": "Finansielle holdingselskaber",
+                "adgangs_uuid": "0a3f508e-bd01-32b8-e044-0003ba298018",
+                "lon": 9.65541644,
+                "lat": 55.6362052,
+                "style": {
+                  "weight": 1
+                }
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  9.65541644,
+                  55.6362052
+                ]
+              },
+              "bbox": [
+                9.65541644,
+                55.6362052,
+                9.65541644,
+                55.6362052
+              ]
+            },
+            {
+              "id": "24",
+              "type": "Feature",
+              "properties": {
+                "pno": 1009852375,
+                "cvr": 27142567,
+                "company": "Stensebyg\u00e5rd v/ L.K.W. Hansen",
+                "name": "Kaka Consult v/Lars Wichmann",
+                "address": "Krabbesholmvej 27, 1. th.",
+                "zipcode": "2700",
+                "city": "Br\u00f8nsh\u00f8j",
+                "startdate": "01/05 - 2003",
+                "enddate": "15/10 - 2003",
+                "employees": null,
+                "industrycode": 980000,
+                "industrydesc": "Uoplyst",
+                "adgangs_uuid": "0a3f507a-ae5e-32b8-e044-0003ba298018",
+                "lon": 12.49852935,
+                "lat": 55.70267694,
+                "style": {
+                  "weight": 1
+                }
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  12.498529349999998,
+                  55.70267693999999
+                ]
+              },
+              "bbox": [
+                12.498529349999998,
+                55.70267693999999,
+                12.498529349999998,
+                55.70267693999999
+              ]
+            },
+            {
+              "id": "25",
+              "type": "Feature",
+              "properties": {
+                "pno": 1010793889,
+                "cvr": 27142567,
+                "company": "Stensebyg\u00e5rd v/ L.K.W. Hansen",
+                "name": "Stensebyg\u00e5rd v/ L.K.W. Hansen",
+                "address": "Stensebyvejen 28",
+                "zipcode": "3730",
+                "city": "Nex\u00f8",
+                "startdate": "01/08 - 2004",
+                "enddate": null,
+                "employees": "0",
+                "industrycode": 21000,
+                "industrydesc": "Dyrkning af tr\u00e6er og andre skovbrugsaktiviteter",
+                "adgangs_uuid": "0a3f5087-a356-32b8-e044-0003ba298018",
+                "lon": 15.05724646,
+                "lat": 55.03831048,
+                "style": {
+                  "weight": 1
+                }
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  15.05724646,
+                  55.03831048
+                ]
+              },
+              "bbox": [
+                15.05724646,
+                55.03831048,
+                15.05724646,
+                55.03831048
+              ]
+            },
+            {
+              "id": "26",
+              "type": "Feature",
+              "properties": {
+                "pno": 1009891982,
+                "cvr": 27175813,
+                "company": "Aventa IT v/ Simon Kjellerup",
+                "name": "Aventa IT v/ Simon Kjellerup",
+                "address": "Forchhammersvej 28, 4",
+                "zipcode": "1920",
+                "city": "Frederiksberg C",
+                "startdate": "01/06 - 2003",
+                "enddate": null,
+                "employees": "3",
+                "industrycode": 622000,
+                "industrydesc": "Computerkonsulentbistand og forvaltning af computerfaciliteter",
+                "adgangs_uuid": "0a3f507b-4791-32b8-e044-0003ba298018",
+                "lon": 12.5491328,
+                "lat": 55.68062198,
+                "style": {
+                  "weight": 1
+                }
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  12.5491328,
+                  55.680621980000005
+                ]
+              },
+              "bbox": [
+                12.5491328,
+                55.680621980000005,
+                12.5491328,
+                55.680621980000005
+              ]
+            },
+            {
+              "id": "27",
+              "type": "Feature",
+              "properties": {
+                "pno": 1031524993,
+                "cvr": 45764044,
+                "company": "Waken Technology ApS",
+                "name": "Waken Technology ApS",
+                "address": "Helsinkigade 29",
+                "zipcode": "2150",
+                "city": "Nordhavn",
+                "startdate": "16/07 - 2025",
+                "enddate": null,
+                "employees": null,
+                "industrycode": 261100,
+                "industrydesc": "Fremstilling af elektroniske komponenter",
+                "adgangs_uuid": "0a3f507a-bc26-32b8-e044-0003ba298018",
+                "lon": 12.59788684,
+                "lat": 55.70806117,
+                "style": {
+                  "weight": 1
+                }
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  12.59788684,
+                  55.70806116999999
+                ]
+              },
+              "bbox": [
+                12.59788684,
+                55.70806116999999,
+                12.59788684,
+                55.70806116999999
+              ]
+            },
+            {
+              "id": "28",
+              "type": "Feature",
+              "properties": {
+                "pno": 1030373665,
+                "cvr": 44845466,
+                "company": "Npn support",
+                "name": "Npn support",
+                "address": "Finsensvej 11C, 3. th.",
+                "zipcode": "2000",
+                "city": "Frederiksberg",
+                "startdate": "22/05 - 2024",
+                "enddate": null,
+                "employees": null,
+                "industrycode": 952200,
+                "industrydesc": "Reparation og vedligeholdelse af husholdningsapparater og redskaber til hus og have",
+                "adgangs_uuid": "0a3f507b-4658-32b8-e044-0003ba298018",
+                "lon": 12.5190469,
+                "lat": 55.68028841,
+                "style": {
+                  "weight": 1
+                }
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  12.5190469,
+                  55.68028841
+                ]
+              },
+              "bbox": [
+                12.5190469,
+                55.68028841,
+                12.5190469,
+                55.68028841
+              ]
+            },
+            {
+              "id": "29",
+              "type": "Feature",
+              "properties": {
+                "pno": 1029017596,
+                "cvr": 43843222,
+                "company": "M. Taggatz Holding ApS",
+                "name": "M. Taggatz Holding ApS",
+                "address": "R\u00f8dtj\u00f8rnevej 4",
+                "zipcode": "3100",
+                "city": "Hornb\u00e6k",
+                "startdate": "10/02 - 2023",
+                "enddate": null,
+                "employees": null,
+                "industrycode": 642120,
+                "industrydesc": "Ikke-finansielle holdingselskaber",
+                "adgangs_uuid": "0a3f507f-d4ff-32b8-e044-0003ba298018",
+                "lon": 12.44280588,
+                "lat": 56.08017644,
+                "style": {
+                  "weight": 1
+                }
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  12.44280588,
+                  56.080176439999995
+                ]
+              },
+              "bbox": [
+                12.44280588,
+                56.080176439999995,
+                12.44280588,
+                56.080176439999995
+              ]
+            },
+            {
+              "id": "30",
+              "type": "Feature",
+              "properties": {
+                "pno": 1014541299,
+                "cvr": 31581354,
+                "company": "EMMER HOLDING ApS",
+                "name": "EMMER HOLDING ApS",
+                "address": "Farimagsvej 32",
+                "zipcode": "4700",
+                "city": "N\u00e6stved",
+                "startdate": "23/06 - 2008",
+                "enddate": null,
+                "employees": null,
+                "industrycode": 682040,
+                "industrydesc": "Udlejning af erhvervsejendomme",
+                "adgangs_uuid": "0a3f5086-0514-32b8-e044-0003ba298018",
+                "lon": 11.76550237,
+                "lat": 55.23148479,
+                "style": {
+                  "weight": 1
+                }
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  11.76550237,
+                  55.23148479000001
+                ]
+              },
+              "bbox": [
+                11.76550237,
+                55.23148479000001,
+                11.76550237,
+                55.23148479000001
+              ]
+            },
+            {
+              "id": "31",
+              "type": "Feature",
+              "properties": {
+                "pno": 1018756753,
+                "cvr": 35475168,
+                "company": "T\u00f8jeksperten, Varde ApS",
+                "name": "T\u00f8jeksperten, Varde ApS",
+                "address": "Kr\u00e6mmergade 11",
+                "zipcode": "6800",
+                "city": "Varde",
+                "startdate": "16/09 - 2013",
+                "enddate": null,
+                "employees": "3",
+                "industrycode": 477110,
+                "industrydesc": "Detailhandel med t\u00f8j",
+                "adgangs_uuid": "0a3f508e-5c6e-32b8-e044-0003ba298018",
+                "lon": 8.48223253,
+                "lat": 55.62075283,
+                "style": {
+                  "weight": 1
+                }
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  8.48223253,
+                  55.620752829999994
+                ]
+              },
+              "bbox": [
+                8.48223253,
+                55.620752829999994,
+                8.48223253,
+                55.620752829999994
+              ]
+            },
+            {
+              "id": "32",
+              "type": "Feature",
+              "properties": {
+                "pno": 1008298447,
+                "cvr": 25913221,
+                "company": "Arne Kartin Olsen",
+                "name": "Arne Kartin Olsen",
+                "address": "Havbakken 198",
+                "zipcode": "6710",
+                "city": "Esbjerg V",
+                "startdate": "23/02 - 2001",
+                "enddate": null,
+                "employees": "0",
+                "industrycode": 702000,
+                "industrydesc": "Virksomhedsr\u00e5dgivning og anden ledelsesr\u00e5dgivning",
+                "adgangs_uuid": "0a3f508d-8934-32b8-e044-0003ba298018",
+                "lon": 8.37815478,
+                "lat": 55.51731091,
+                "style": {
+                  "weight": 1
+                }
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  8.37815478,
+                  55.51731090999999
+                ]
+              },
+              "bbox": [
+                8.37815478,
+                55.51731090999999,
+                8.37815478,
+                55.51731090999999
+              ]
+            },
+            {
+              "id": "33",
+              "type": "Feature",
+              "properties": {
+                "pno": 1029447450,
+                "cvr": 44158000,
+                "company": "NovaLink ApS",
+                "name": "NovaLink ApS",
+                "address": "R\u00f8dovrevej 247, st. tv.",
+                "zipcode": "2610",
+                "city": "R\u00f8dovre",
+                "startdate": "01/07 - 2023",
+                "enddate": null,
+                "employees": null,
+                "industrycode": 642120,
+                "industrydesc": "Ikke-finansielle holdingselskaber",
+                "adgangs_uuid": "75d4829b-34f6-165e-e044-00144f3ead67",
+                "lon": 12.46220781,
+                "lat": 55.69060369,
+                "style": {
+                  "weight": 1
+                }
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  12.46220781,
+                  55.69060369000001
+                ]
+              },
+              "bbox": [
+                12.46220781,
+                55.69060369000001,
+                12.46220781,
+                55.69060369000001
+              ]
+            },
+            {
+              "id": "34",
+              "type": "Feature",
+              "properties": {
+                "pno": 1029499787,
+                "cvr": 44199041,
+                "company": "H. Jespersen ApS",
+                "name": "H. Jespersen ApS",
+                "address": "Wagnersvej 8, st. tv.",
+                "zipcode": "2450",
+                "city": "K\u00f8benhavn SV",
+                "startdate": "23/07 - 2023",
+                "enddate": null,
+                "employees": "1",
+                "industrycode": 622000,
+                "industrydesc": "Computerkonsulentbistand og forvaltning af computerfaciliteter",
+                "adgangs_uuid": "0a3f507b-1a5d-32b8-e044-0003ba298018",
+                "lon": 12.53277521,
+                "lat": 55.64757755,
+                "style": {
+                  "weight": 1
+                }
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  12.532775209999999,
+                  55.647577549999994
+                ]
+              },
+              "bbox": [
+                12.532775209999999,
+                55.647577549999994,
+                12.532775209999999,
+                55.647577549999994
+              ]
+            },
+            {
+              "id": "35",
+              "type": "Feature",
+              "properties": {
+                "pno": 1024774038,
+                "cvr": 40576746,
+                "company": "JF coachning",
+                "name": "JF coachning",
+                "address": "Alphavej 11",
+                "zipcode": "8270",
+                "city": "H\u00f8jbjerg",
+                "startdate": "12/06 - 2019",
+                "enddate": null,
+                "employees": null,
+                "industrycode": 855900,
+                "industrydesc": "Anden undervisning i.a.n.",
+                "adgangs_uuid": "0a3f5095-df4e-32b8-e044-0003ba298018",
+                "lon": 10.18893379,
+                "lat": 56.12854834,
+                "style": {
+                  "weight": 1
+                }
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  10.18893379,
+                  56.128548339999995
+                ]
+              },
+              "bbox": [
+                10.18893379,
+                56.128548339999995,
+                10.18893379,
+                56.128548339999995
+              ]
+            },
+            {
+              "id": "36",
+              "type": "Feature",
+              "properties": {
+                "pno": 1027954177,
+                "cvr": 43018507,
+                "company": "BygSupport",
+                "name": "BygSupport",
+                "address": "Under Bankerne 5",
+                "zipcode": "5492",
+                "city": "Vissenbjerg",
+                "startdate": "14/02 - 2022",
+                "enddate": null,
+                "employees": null,
+                "industrycode": 433200,
+                "industrydesc": "T\u00f8mrer- og bygningssnedkeraktiviteter",
+                "adgangs_uuid": "0a3f508a-e7c2-32b8-e044-0003ba298018",
+                "lon": 10.12523139,
+                "lat": 55.37554838,
+                "style": {
+                  "weight": 1
+                }
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  10.12523139,
+                  55.37554838
+                ]
+              },
+              "bbox": [
+                10.12523139,
+                55.37554838,
+                10.12523139,
+                55.37554838
+              ]
+            },
+            {
+              "id": "37",
+              "type": "Feature",
+              "properties": {
+                "pno": 1019540789,
+                "cvr": 36038373,
+                "company": "EHO HOLDING ApS",
+                "name": "EHO HOLDING ApS",
+                "address": "Stejlbjergparken 17C",
+                "zipcode": "7120",
+                "city": "Vejle \u00d8st",
+                "startdate": "04/07 - 2014",
+                "enddate": null,
+                "employees": null,
+                "industrycode": 642120,
+                "industrydesc": "Ikke-finansielle holdingselskaber",
+                "adgangs_uuid": "7096f618-6956-5ed1-e044-00144f3ead67",
+                "lon": 9.60537086,
+                "lat": 55.70893658,
+                "style": {
+                  "weight": 1
+                }
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  9.60537086,
+                  55.70893658
+                ]
+              },
+              "bbox": [
+                9.60537086,
+                55.70893658,
+                9.60537086,
+                55.70893658
+              ]
+            },
+            {
+              "id": "38",
+              "type": "Feature",
+              "properties": {
+                "pno": 1001840369,
+                "cvr": 43477617,
+                "company": "VUGGESTUEN FREDERIKSG\u00c5RDEN",
+                "name": "VUGGESTUEN FREDERIKSG\u00c5RDEN",
+                "address": "H\u00f8jmarkvej 45",
+                "zipcode": "8270",
+                "city": "H\u00f8jbjerg",
+                "startdate": "01/03 - 1973",
+                "enddate": null,
+                "employees": "23",
+                "industrycode": 889120,
+                "industrydesc": "Drift af vuggestuer",
+                "adgangs_uuid": "0a3f5096-5916-32b8-e044-0003ba298018",
+                "lon": 10.21273583,
+                "lat": 56.11208911,
+                "style": {
+                  "weight": 1
+                }
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  10.21273583,
+                  56.11208910999999
+                ]
+              },
+              "bbox": [
+                10.21273583,
+                56.11208910999999,
+                10.21273583,
+                56.11208910999999
+              ]
+            },
+            {
+              "id": "39",
+              "type": "Feature",
+              "properties": {
+                "pno": 1019428229,
+                "cvr": 35685626,
+                "company": "Julie Staxen",
+                "name": "Julie Staxen",
+                "address": "Ingholtsvej 1",
+                "zipcode": "2680",
+                "city": "Solr\u00f8d Strand",
+                "startdate": "15/06 - 2014",
+                "enddate": null,
+                "employees": "0",
+                "industrycode": 869900,
+                "industrydesc": "Drift af sundhedsv\u00e6sen i \u00f8vrigt i.a.n.",
+                "adgangs_uuid": "0a3f5082-4980-32b8-e044-0003ba298018",
+                "lon": 12.22906278,
+                "lat": 55.53802132,
+                "style": {
+                  "weight": 1
+                }
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  12.22906278,
+                  55.538021320000006
+                ]
+              },
+              "bbox": [
+                12.22906278,
+                55.538021320000006,
+                12.22906278,
+                55.538021320000006
+              ]
+            },
+            {
+              "id": "40",
+              "type": "Feature",
+              "properties": {
+                "pno": 1008114915,
+                "cvr": 25765605,
+                "company": "OLE VERGMANN HOLDING ApS",
+                "name": "OLE VERGMANN HOLDING ApS",
+                "address": "Skovvangsvej 12",
+                "zipcode": "3670",
+                "city": "Veks\u00f8 Sj\u00e6lland",
+                "startdate": "01/12 - 2000",
+                "enddate": null,
+                "employees": null,
+                "industrycode": 642120,
+                "industrydesc": "Ikke-finansielle holdingselskaber",
+                "adgangs_uuid": "0a3f5080-da32-32b8-e044-0003ba298018",
+                "lon": 12.23657944,
+                "lat": 55.76801548,
+                "style": {
+                  "weight": 1
+                }
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  12.23657944,
+                  55.768015479999995
+                ]
+              },
+              "bbox": [
+                12.23657944,
+                55.768015479999995,
+                12.23657944,
+                55.768015479999995
+              ]
+            },
+            {
+              "id": "41",
+              "type": "Feature",
+              "properties": {
+                "pno": 1031969863,
+                "cvr": 46124286,
+                "company": "Tandl\u00e6ge Simone Holbo Holding ApS",
+                "name": "Tandl\u00e6ge Simone Holbo Holding ApS",
+                "address": "N\u00f8rre S\u00f8gade 49",
+                "zipcode": "1370",
+                "city": "K\u00f8benhavn K",
+                "startdate": "17/12 - 2025",
+                "enddate": null,
+                "employees": null,
+                "industrycode": 642120,
+                "industrydesc": "Ikke-finansielle holdingselskaber",
+                "adgangs_uuid": "0a3f507a-d200-32b8-e044-0003ba298018",
+                "lon": 12.56113944,
+                "lat": 55.68154944,
+                "style": {
+                  "weight": 1
+                }
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  12.56113944,
+                  55.68154943999998
+                ]
+              },
+              "bbox": [
+                12.56113944,
+                55.68154943999998,
+                12.56113944,
+                55.68154943999998
+              ]
+            },
+            {
+              "id": "42",
+              "type": "Feature",
+              "properties": {
+                "pno": 1031097319,
+                "cvr": 45416925,
+                "company": "Bures\u00f8gaard",
+                "name": "Bures\u00f8gaard Br\u00f8d",
+                "address": "Klokkekildevej 64",
+                "zipcode": "3550",
+                "city": "Slangerup",
+                "startdate": "21/02 - 2025",
+                "enddate": null,
+                "employees": null,
+                "industrycode": 107120,
+                "industrydesc": "Fremstilling af friske bageriprodukter",
+                "adgangs_uuid": "0a3f5080-d2b2-32b8-e044-0003ba298018",
+                "lon": 12.23172307,
+                "lat": 55.8141998,
+                "style": {
+                  "weight": 1
+                }
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  12.231723069999997,
+                  55.81419979999999
+                ]
+              },
+              "bbox": [
+                12.231723069999997,
+                55.81419979999999,
+                12.231723069999997,
+                55.81419979999999
+              ]
+            },
+            {
+              "id": "43",
+              "type": "Feature",
+              "properties": {
+                "pno": 1020053077,
+                "cvr": 36229977,
+                "company": "Ejerforeningen Algade 22",
+                "name": "Ejerforeningen Algade 22",
+                "address": "Algade 22C",
+                "zipcode": "4220",
+                "city": "Kors\u00f8r",
+                "startdate": "13/01 - 2015",
+                "enddate": "06/04 - 2020",
+                "employees": null,
+                "industrycode": 949900,
+                "industrydesc": "Andre organisationer og foreninger i.a.n.",
+                "adgangs_uuid": "0a3f5083-a4f1-32b8-e044-0003ba298018",
+                "lon": 11.13939933,
+                "lat": 55.3284561,
+                "style": {
+                  "weight": 1
+                }
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  11.13939933,
+                  55.32845610000001
+                ]
+              },
+              "bbox": [
+                11.13939933,
+                55.32845610000001,
+                11.13939933,
+                55.32845610000001
+              ]
+            },
+            {
+              "id": "44",
+              "type": "Feature",
+              "properties": {
+                "pno": 1025778592,
+                "cvr": 36229977,
+                "company": "Ejerforeningen Algade 22",
+                "name": "Ejerforeningen Algade 22",
+                "address": "Algade 22C",
+                "zipcode": "4220",
+                "city": "Kors\u00f8r",
+                "startdate": "28/04 - 2020",
+                "enddate": "01/05 - 2023",
+                "employees": null,
+                "industrycode": 949900,
+                "industrydesc": "Andre organisationer og foreninger i.a.n.",
+                "adgangs_uuid": "0a3f5083-a4f1-32b8-e044-0003ba298018",
+                "lon": 11.13939933,
+                "lat": 55.3284561,
+                "style": {
+                  "weight": 1
+                }
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  11.13939933,
+                  55.32845610000001
+                ]
+              },
+              "bbox": [
+                11.13939933,
+                55.32845610000001,
+                11.13939933,
+                55.32845610000001
+              ]
+            },
+            {
+              "id": "45",
+              "type": "Feature",
+              "properties": {
+                "pno": 1029349858,
+                "cvr": 36229977,
+                "company": "Ejerforeningen Algade 22",
+                "name": "Ejerforeningen Algade 22",
+                "address": "Algade 22C",
+                "zipcode": "4220",
+                "city": "Kors\u00f8r",
+                "startdate": "26/05 - 2023",
+                "enddate": null,
+                "employees": null,
+                "industrycode": 949900,
+                "industrydesc": "Andre organisationers og foreningers aktiviteter i.a.n.",
+                "adgangs_uuid": "0a3f5083-a4f1-32b8-e044-0003ba298018",
+                "lon": 11.13939933,
+                "lat": 55.3284561,
+                "style": {
+                  "weight": 1
+                }
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  11.13939933,
+                  55.32845610000001
+                ]
+              },
+              "bbox": [
+                11.13939933,
+                55.32845610000001,
+                11.13939933,
+                55.32845610000001
+              ]
+            },
+            {
+              "id": "46",
+              "type": "Feature",
+              "properties": {
+                "pno": 1029955715,
+                "cvr": 44517248,
+                "company": "Knivsberg Fonden",
+                "name": "Knivsberg Fonden",
+                "address": "Michael Jebsens Plads 1, st",
+                "zipcode": "6200",
+                "city": "Aabenraa",
+                "startdate": "06/12 - 2023",
+                "enddate": null,
+                "employees": null,
+                "industrycode": 889910,
+                "industrydesc": "St\u00f8tteaktiviteter relateret til sygdomsbek\u00e6mpende, sociale og velg\u00f8rende form\u00e5l",
+                "adgangs_uuid": "0a3f508c-ecd3-32b8-e044-0003ba298018",
+                "lon": 9.42194501,
+                "lat": 55.04189266,
+                "style": {
+                  "weight": 1
+                }
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  9.42194501,
+                  55.04189266
+                ]
+              },
+              "bbox": [
+                9.42194501,
+                55.04189266,
+                9.42194501,
+                55.04189266
+              ]
+            },
+            {
+              "id": "47",
+              "type": "Feature",
+              "properties": {
+                "pno": 1006781510,
+                "cvr": 73103215,
+                "company": "N. P. LOUIS-HANSEN ApS",
+                "name": "N. P. LOUIS-HANSEN ApS",
+                "address": " 480",
+                "zipcode": "9999",
+                "city": "Ukendt",
+                "startdate": "28/12 - 1982",
+                "enddate": "16/06 - 1998",
+                "employees": null,
+                "industrycode": 980000,
+                "industrydesc": "Uoplyst",
+                "adgangs_uuid": "833c7b6d-4500-4fa2-b485-388ebb5d1702",
+                "lon": 9.71482194,
+                "lat": 57.36107183,
+                "style": {
+                  "weight": 1
+                }
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  9.71482194,
+                  57.361071829999986
+                ]
+              },
+              "bbox": [
+                9.71482194,
+                57.361071829999986,
+                9.71482194,
+                57.361071829999986
+              ]
+            },
+            {
+              "id": "48",
+              "type": "Feature",
+              "properties": {
+                "pno": 1004623626,
+                "cvr": 73103215,
+                "company": "N. P. LOUIS-HANSEN ApS",
+                "name": "N. P. LOUIS-HANSEN ApS",
+                "address": "Hammerensgade 1, 3",
+                "zipcode": "1267",
+                "city": "K\u00f8benhavn K",
+                "startdate": "17/06 - 1998",
+                "enddate": null,
+                "employees": "1",
+                "industrycode": 682040,
+                "industrydesc": "Udlejning af erhvervsejendomme",
+                "adgangs_uuid": "0a3f507a-8384-32b8-e044-0003ba298018",
+                "lon": 12.59015139,
+                "lat": 55.6883593,
+                "style": {
+                  "weight": 1
+                }
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  12.59015139,
+                  55.688359299999995
+                ]
+              },
+              "bbox": [
+                12.59015139,
+                55.688359299999995,
+                12.59015139,
+                55.688359299999995
+              ]
+            },
+            {
+              "id": "49",
+              "type": "Feature",
+              "properties": {
+                "pno": 1000250287,
+                "cvr": 11525237,
+                "company": "G\u00c5RDEJER KAJ LARSEN",
+                "name": "G\u00c5RDEJER KAJ LARSEN",
+                "address": "Mads M\u00f8llersvej 7",
+                "zipcode": "8860",
+                "city": "Ulstrup",
+                "startdate": "01/07 - 1985",
+                "enddate": null,
+                "employees": "0",
+                "industrycode": 11100,
+                "industrydesc": "Dyrkning af korn (undtagen ris), b\u00e6lgfrugter og olieholdige fr\u00f8",
+                "adgangs_uuid": "0a3f5097-7803-32b8-e044-0003ba298018",
+                "lon": 9.78050025,
+                "lat": 56.41389698,
+                "style": {
+                  "weight": 1
+                }
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  9.78050025,
+                  56.41389697999999
+                ]
+              },
+              "bbox": [
+                9.78050025,
+                56.41389697999999,
+                9.78050025,
+                56.41389697999999
+              ]
+            },
+            {
+              "id": "50",
+              "type": "Feature",
+              "properties": {
+                "pno": 1031207793,
+                "cvr": 45505243,
+                "company": "AM Reng\u00f8ring",
+                "name": "AM Reng\u00f8ring",
+                "address": "M\u00f8ntmestervej 6A, 1. th.",
+                "zipcode": "2400",
+                "city": "K\u00f8benhavn NV",
+                "startdate": "01/04 - 2025",
+                "enddate": null,
+                "employees": null,
+                "industrycode": 812100,
+                "industrydesc": "Almindelig reng\u00f8ring i bygninger",
+                "adgangs_uuid": "0a3f507a-c724-32b8-e044-0003ba298018",
+                "lon": 12.51821914,
+                "lat": 55.70789077,
+                "style": {
+                  "weight": 1
+                }
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  12.51821914,
+                  55.707890769999985
+                ]
+              },
+              "bbox": [
+                12.51821914,
+                55.707890769999985,
+                12.51821914,
+                55.707890769999985
+              ]
+            },
+            {
+              "id": "51",
+              "type": "Feature",
+              "properties": {
+                "pno": 1030390411,
+                "cvr": 44858215,
+                "company": "MEB Vejle Holding Aps",
+                "name": "MEB Vejle Holding Aps",
+                "address": "Fousbjergvej 1",
+                "zipcode": "7100",
+                "city": "Vejle",
+                "startdate": "22/05 - 2024",
+                "enddate": null,
+                "employees": null,
+                "industrycode": 642120,
+                "industrydesc": "Ikke-finansielle holdingselskaber",
+                "adgangs_uuid": "0a3f5090-ba3a-32b8-e044-0003ba298018",
+                "lon": 9.57997262,
+                "lat": 55.67135143,
+                "style": {
+                  "weight": 1
+                }
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  9.57997262,
+                  55.67135143000001
+                ]
+              },
+              "bbox": [
+                9.57997262,
+                55.67135143000001,
+                9.57997262,
+                55.67135143000001
+              ]
+            },
+            {
+              "id": "52",
+              "type": "Feature",
+              "properties": {
+                "pno": 1011666333,
+                "cvr": 28984251,
+                "company": "NORTH AIR LOGISTICS A/S",
+                "name": "NORTH AIR LOGISTICS A/S",
+                "address": "Amager Strandvej 418",
+                "zipcode": "2770",
+                "city": "Kastrup",
+                "startdate": "31/08 - 2005",
+                "enddate": null,
+                "employees": "9",
+                "industrycode": 523100,
+                "industrydesc": "Formidlingsaktiviteter inden for godstransport",
+                "adgangs_uuid": "0a3f507d-e0b4-32b8-e044-0003ba298018",
+                "lon": 12.65316263,
+                "lat": 55.63359561,
+                "style": {
+                  "weight": 1
+                }
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  12.653162630000002,
+                  55.63359561
+                ]
+              },
+              "bbox": [
+                12.653162630000002,
+                55.63359561,
+                12.653162630000002,
+                55.63359561
+              ]
+            },
+            {
+              "id": "53",
+              "type": "Feature",
+              "properties": {
+                "pno": 1030323846,
+                "cvr": 44805243,
+                "company": "Kofoed & Kirk ApS",
+                "name": "Kofoed & Kirk ApS",
+                "address": "Smedev\u00e6nget 18",
+                "zipcode": "4700",
+                "city": "N\u00e6stved",
+                "startdate": "02/05 - 2024",
+                "enddate": null,
+                "employees": "1",
+                "industrycode": 439900,
+                "industrydesc": "Andre specialiserede byggeaktiviteter i.a.n.",
+                "adgangs_uuid": "0a3f5086-3c2d-32b8-e044-0003ba298018",
+                "lon": 11.77311993,
+                "lat": 55.19725079,
+                "style": {
+                  "weight": 1
+                }
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  11.773119929999998,
+                  55.19725079
+                ]
+              },
+              "bbox": [
+                11.773119929999998,
+                55.19725079,
+                11.773119929999998,
+                55.19725079
+              ]
+            },
+            {
+              "id": "54",
+              "type": "Feature",
+              "properties": {
+                "pno": 1014887608,
+                "cvr": 31852609,
+                "company": "EJENDOMSSELSKABET VESTERGADE ApS",
+                "name": "EJENDOMSSELSKABET VESTERGADE ApS",
+                "address": "Klodskovvej 13B",
+                "zipcode": "4800",
+                "city": "Nyk\u00f8bing F",
+                "startdate": "30/10 - 2008",
+                "enddate": null,
+                "employees": null,
+                "industrycode": 682040,
+                "industrydesc": "Udlejning af erhvervsejendomme",
+                "adgangs_uuid": "0a3f5085-d11e-32b8-e044-0003ba298018",
+                "lon": 11.81222176,
+                "lat": 54.81184306,
+                "style": {
+                  "weight": 1
+                }
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  11.81222176,
+                  54.81184306
+                ]
+              },
+              "bbox": [
+                11.81222176,
+                54.81184306,
+                11.81222176,
+                54.81184306
+              ]
+            },
+            {
+              "id": "55",
+              "type": "Feature",
+              "properties": {
+                "pno": 1012336264,
+                "cvr": 29553947,
+                "company": "Gribskov Gymnasium",
+                "name": "Helsinge Gymnasium",
+                "address": "\u00d8stergade 52",
+                "zipcode": "3200",
+                "city": "Helsinge",
+                "startdate": "01/01 - 2007",
+                "enddate": "01/01 - 2007",
+                "employees": null,
+                "industrycode": 802100,
+                "industrydesc": "Gymnasier, studenter- og HF-kurser",
+                "adgangs_uuid": "0a3f507f-92fb-32b8-e044-0003ba298018",
+                "lon": 12.20921982,
+                "lat": 56.02316116,
+                "style": {
+                  "weight": 1
+                }
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  12.209219819999998,
+                  56.02316116
+                ]
+              },
+              "bbox": [
+                12.209219819999998,
+                56.02316116,
+                12.209219819999998,
+                56.02316116
+              ]
+            },
+            {
+              "id": "56",
+              "type": "Feature",
+              "properties": {
+                "pno": 1003275101,
+                "cvr": 29553947,
+                "company": "Gribskov Gymnasium",
+                "name": "Gribskov GYMNASIUM",
+                "address": "\u00d8stergade 52",
+                "zipcode": "3200",
+                "city": "Helsinge",
+                "startdate": "01/01 - 1993",
+                "enddate": null,
+                "employees": "81",
+                "industrycode": 853120,
+                "industrydesc": "Undervisning p\u00e5 gymnasier, studenter- og HF-kurser",
+                "adgangs_uuid": "0a3f507f-92fb-32b8-e044-0003ba298018",
+                "lon": 12.20921982,
+                "lat": 56.02316116,
+                "style": {
+                  "weight": 1
+                }
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  12.209219819999998,
+                  56.02316116
+                ]
+              },
+              "bbox": [
+                12.209219819999998,
+                56.02316116,
+                12.209219819999998,
+                56.02316116
+              ]
+            },
+            {
+              "id": "57",
+              "type": "Feature",
+              "properties": {
+                "pno": 1020050655,
+                "cvr": 36486198,
+                "company": "HENRIKSEN HOLDING IKAST ApS",
+                "name": "HENRIKSEN HOLDING IKAST ApS",
+                "address": "Hesselbjergvej 13",
+                "zipcode": "7430",
+                "city": "Ikast",
+                "startdate": "05/01 - 2015",
+                "enddate": null,
+                "employees": null,
+                "industrycode": 642120,
+                "industrydesc": "Ikke-finansielle holdingselskaber",
+                "adgangs_uuid": "0a3f5092-0b61-32b8-e044-0003ba298018",
+                "lon": 9.11912692,
+                "lat": 56.11696058,
+                "style": {
+                  "weight": 1
+                }
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  9.11912692,
+                  56.11696057999999
+                ]
+              },
+              "bbox": [
+                9.11912692,
+                56.11696057999999,
+                9.11912692,
+                56.11696057999999
+              ]
+            },
+            {
+              "id": "58",
+              "type": "Feature",
+              "properties": {
+                "pno": 1018756583,
+                "cvr": 35475087,
+                "company": "Servicekompagniet ApS",
+                "name": "Servicekompagniet ApS",
+                "address": "Stavneagervej 43",
+                "zipcode": "8250",
+                "city": "Eg\u00e5",
+                "startdate": "02/09 - 2013",
+                "enddate": null,
+                "employees": "2",
+                "industrycode": 468600,
+                "industrydesc": "Engroshandel med andre r\u00e5varer og halvfabrikata",
+                "adgangs_uuid": "0a3f5096-f3e1-32b8-e044-0003ba298018",
+                "lon": 10.29091233,
+                "lat": 56.22549877,
+                "style": {
+                  "weight": 1
+                }
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  10.29091233,
+                  56.22549877
+                ]
+              },
+              "bbox": [
+                10.29091233,
+                56.22549877,
+                10.29091233,
+                56.22549877
+              ]
+            },
+            {
+              "id": "59",
+              "type": "Feature",
+              "properties": {
+                "pno": 1029333153,
+                "cvr": 44070103,
+                "company": "Cupcake Paradis",
+                "name": "Cupcake Paradis",
+                "address": "Lundeg\u00e5rdshegnet 36",
+                "zipcode": "4030",
+                "city": "Tune",
+                "startdate": "23/05 - 2023",
+                "enddate": null,
+                "employees": null,
+                "industrycode": 471110,
+                "industrydesc": "Detailhandel med kioskvarer",
+                "adgangs_uuid": "0a3f5081-3571-32b8-e044-0003ba298018",
+                "lon": 12.19089897,
+                "lat": 55.59526245,
+                "style": {
+                  "weight": 1
+                }
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  12.19089897,
+                  55.59526245
+                ]
+              },
+              "bbox": [
+                12.19089897,
+                55.59526245,
+                12.19089897,
+                55.59526245
+              ]
+            },
+            {
+              "id": "60",
+              "type": "Feature",
+              "properties": {
+                "pno": 1023291874,
+                "cvr": 39284960,
+                "company": "JK Kl\u00f8v Holding ApS",
+                "name": "JK Kl\u00f8v Holding ApS",
+                "address": "Kl\u00f8v M\u00f8lle Vej 15",
+                "zipcode": "7700",
+                "city": "Thisted",
+                "startdate": "29/01 - 2018",
+                "enddate": null,
+                "employees": null,
+                "industrycode": 642120,
+                "industrydesc": "Ikke-finansielle holdingselskaber",
+                "adgangs_uuid": "0a3f5098-8689-32b8-e044-0003ba298018",
+                "lon": 8.81415004,
+                "lat": 57.02219671,
+                "style": {
+                  "weight": 1
+                }
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  8.81415004,
+                  57.022196709999996
+                ]
+              },
+              "bbox": [
+                8.81415004,
+                57.022196709999996,
+                8.81415004,
+                57.022196709999996
+              ]
+            },
+            {
+              "id": "61",
+              "type": "Feature",
+              "properties": {
+                "pno": 1005617395,
+                "cvr": 13889295,
+                "company": "Midtdjurs Klovpleje V/Tage \u00d8rgaard Hansen",
+                "name": "MIDTDJURS KLOVPLEJE/DISKOTEK DIRCHV/TAGE \u00d8RGAARD HANSEN",
+                "address": " 135",
+                "zipcode": "9999",
+                "city": "Ukendt",
+                "startdate": "01/02 - 1987",
+                "enddate": "31/12 - 1990",
+                "employees": null,
+                "industrycode": 980000,
+                "industrydesc": "Uoplyst",
+                "adgangs_uuid": "f28ce9a8-6248-4981-a62e-bdb39ec3ffc9",
+                "lon": 10.5906874,
+                "lat": 57.71445447,
+                "style": {
+                  "weight": 1
+                }
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  10.5906874,
+                  57.71445447000001
+                ]
+              },
+              "bbox": [
+                10.5906874,
+                57.71445447000001,
+                10.5906874,
+                57.71445447000001
+              ]
+            },
+            {
+              "id": "62",
+              "type": "Feature",
+              "properties": {
+                "pno": 1000642600,
+                "cvr": 13889295,
+                "company": "Midtdjurs Klovpleje V/Tage \u00d8rgaard Hansen",
+                "name": "Midtdjurs Klovpleje V/Tage \u00d8rgaard Hansen",
+                "address": "S\u00f8ndermarken 135",
+                "zipcode": "8560",
+                "city": "Kolind",
+                "startdate": "01/01 - 1991",
+                "enddate": null,
+                "employees": "0",
+                "industrycode": 16200,
+                "industrydesc": "St\u00f8tteaktiviteter i forbindelse med husdyravl",
+                "adgangs_uuid": "0a3f5094-2c62-32b8-e044-0003ba298018",
+                "lon": 10.58632107,
+                "lat": 56.35494222,
+                "style": {
+                  "weight": 1
+                }
+              },
+              "geometry": {
+                "type": "Point",
+                "coordinates": [
+                  10.58632107,
+                  56.35494222
+                ]
+              },
+              "bbox": [
+                10.58632107,
+                56.35494222,
+                10.58632107,
+                56.35494222
+              ]
+            }
+          ],
+          "bbox": [
+            8.37815478,
+            54.81184306,
+            15.05724646,
+            57.71445447000001
+          ]
+        },
+        "hover_style": {
+          "weight": 3,
+          "fillOpacity": 0,
+          "color": "yellow"
+        },
+        "layers": [],
+        "name": "PU Units (CVR)",
+        "options": [
+          "pm_ignore"
+        ],
+        "point_style": {},
+        "style": {
+          "weight": 1
+        },
+        "subitems": []
+      }
+    },
+    "9b9b41a4977741f3ac99c7928f86d0b3": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "height": "28px",
+        "padding": "0px 0px 0px 4px",
+        "width": "28px"
+      }
+    },
+    "18427b38924743c49bbe164a3238750a": {
+      "model_name": "ToggleButtonStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "e07b1a566db946c1b60d694c73337e5d": {
+      "model_name": "ToggleButtonModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "icon": "server",
+        "layout": "IPY_MODEL_9b9b41a4977741f3ac99c7928f86d0b3",
+        "style": "IPY_MODEL_18427b38924743c49bbe164a3238750a",
+        "tooltip": "Layer Manager",
+        "value": true
+      }
+    },
+    "7995e1df39b54dbb81127961a4f063af": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "height": "28px",
+        "padding": "0px 0px 0px 4px",
+        "width": "28px"
+      }
+    },
+    "50b7835c7fce42edafe92ffd7c49322d": {
+      "model_name": "ToggleButtonStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "44cccaa4b7eb42c0ac97302c1b845223": {
+      "model_name": "ToggleButtonModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "button_style": "primary",
+        "icon": "times",
+        "layout": "IPY_MODEL_7995e1df39b54dbb81127961a4f063af",
+        "style": "IPY_MODEL_50b7835c7fce42edafe92ffd7c49322d",
+        "tooltip": "Close the tool"
+      }
+    },
+    "dfafcc2e8241491dad41e3092cdfa738": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "ece04a1454e340a4a20b36d557eecf77": {
+      "model_name": "HBoxModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "children": [
+          "IPY_MODEL_44cccaa4b7eb42c0ac97302c1b845223",
+          "IPY_MODEL_e07b1a566db946c1b60d694c73337e5d"
+        ],
+        "layout": "IPY_MODEL_dfafcc2e8241491dad41e3092cdfa738"
+      }
+    },
+    "10d9fdc0f707412abe72329f13183039": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "fd7eb0c85b7c45a1ab275af277c45366": {
+      "model_name": "VBoxModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "children": [
+          "IPY_MODEL_e68188aa94a848e394ce36fc67657ef8",
+          "IPY_MODEL_9d96c6b14f6843e7a5382b7336afb904",
+          "IPY_MODEL_70d3ae6935ee47328ea0f341ddb8bc06"
+        ],
+        "layout": "IPY_MODEL_10d9fdc0f707412abe72329f13183039"
+      }
+    },
+    "3c172b2d41c14309bdccb3c5778bbb24": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "e09137577bf54044903aebd3f3f01afd": {
+      "model_name": "VBoxModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "children": [
+          "IPY_MODEL_ece04a1454e340a4a20b36d557eecf77",
+          "IPY_MODEL_fd7eb0c85b7c45a1ab275af277c45366"
+        ],
+        "layout": "IPY_MODEL_3c172b2d41c14309bdccb3c5778bbb24"
+      }
+    },
+    "f4b33caa6005465692b61f2606ff0b62": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "height": "18px",
+        "padding": "0px 8px 25px 8px",
+        "width": "30ex"
+      }
+    },
+    "ca8b788d498a4ed2863616c29177af54": {
+      "model_name": "CheckboxStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "e68188aa94a848e394ce36fc67657ef8": {
+      "model_name": "CheckboxModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "description": "All layers on/off",
+        "indent": false,
+        "layout": "IPY_MODEL_f4b33caa6005465692b61f2606ff0b62",
+        "style": "IPY_MODEL_ca8b788d498a4ed2863616c29177af54"
+      }
+    },
+    "80c1ad850e414348ac32dcc91392f915": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "height": "18px",
+        "width": "25ex"
+      }
+    },
+    "157ce96928574686b73256202fd908da": {
+      "model_name": "CheckboxStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "5fbe178645604dc29d810d55d637f6f7": {
+      "model_name": "CheckboxModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "description": "OpenStreetMap",
+        "indent": false,
+        "layout": "IPY_MODEL_80c1ad850e414348ac32dcc91392f915",
+        "style": "IPY_MODEL_157ce96928574686b73256202fd908da",
+        "value": true
+      }
+    },
+    "63fea550ad0f4c39afe9a319762f02d2": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "width": "80px"
+      }
+    },
+    "6e2e8ac391e44249916cc3976fed956d": {
+      "model_name": "SliderStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "f3aefb541a2d40e8afaa686408c45883": {
+      "model_name": "FloatSliderModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "layout": "IPY_MODEL_63fea550ad0f4c39afe9a319762f02d2",
+        "max": 1.0,
+        "readout": false,
+        "step": 0.01,
+        "style": "IPY_MODEL_6e2e8ac391e44249916cc3976fed956d",
+        "value": 1.0
+      }
+    },
+    "b2f3c9ca60c345f2b34a91ef1ab79391": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "height": "25px",
+        "padding": "0px 0px 0px 0px",
+        "width": "25px"
+      }
+    },
+    "f42c5a762e5842bcbcdcd1767e78b79f": {
+      "model_name": "ButtonStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "d35b2512f61e434c86b6903df27baf70": {
+      "model_name": "ButtonModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "icon": "gear",
+        "layout": "IPY_MODEL_b2f3c9ca60c345f2b34a91ef1ab79391",
+        "style": "IPY_MODEL_f42c5a762e5842bcbcdcd1767e78b79f",
+        "tooltip": "OpenStreetMap"
+      }
+    },
+    "55471b29deac4f448bc9580de72a9f4b": {
+      "model_name": "LinkModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "source": [
+          "IPY_MODEL_5fbe178645604dc29d810d55d637f6f7",
+          "value"
+        ],
+        "target": [
+          "IPY_MODEL_c00ba5581fd64e7282244216a5bb5172",
+          "visible"
+        ]
+      }
+    },
+    "f326ab76e8094248b09ab4490389658f": {
+      "model_name": "DirectionalLinkModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "source": [
+          "IPY_MODEL_f3aefb541a2d40e8afaa686408c45883",
+          "value"
+        ],
+        "target": [
+          "IPY_MODEL_c00ba5581fd64e7282244216a5bb5172",
+          "opacity"
+        ]
+      }
+    },
+    "661e7c021f4b47658119269d4189639a": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "padding": "0px 8px 0px 8px"
+      }
+    },
+    "9d96c6b14f6843e7a5382b7336afb904": {
+      "model_name": "HBoxModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "children": [
+          "IPY_MODEL_5fbe178645604dc29d810d55d637f6f7",
+          "IPY_MODEL_d35b2512f61e434c86b6903df27baf70",
+          "IPY_MODEL_f3aefb541a2d40e8afaa686408c45883"
+        ],
+        "layout": "IPY_MODEL_661e7c021f4b47658119269d4189639a"
+      }
+    },
+    "22eac652ae18481693600d47c6fe5eb5": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "height": "18px",
+        "width": "25ex"
+      }
+    },
+    "ba0829410e7645ff97c2d82fb498ea3a": {
+      "model_name": "CheckboxStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "8b78f183816c468187f0cd0a55450ba3": {
+      "model_name": "CheckboxModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "description": "PU Units (CVR)",
+        "indent": false,
+        "layout": "IPY_MODEL_22eac652ae18481693600d47c6fe5eb5",
+        "style": "IPY_MODEL_ba0829410e7645ff97c2d82fb498ea3a",
+        "value": true
+      }
+    },
+    "82616294a269467c83b60414ca33d895": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "width": "80px"
+      }
+    },
+    "989529fc99894b9d93f1bf3a60500de7": {
+      "model_name": "SliderStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "58453c83c3dc4a4bb9736bab62ffd473": {
+      "model_name": "FloatSliderModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "layout": "IPY_MODEL_82616294a269467c83b60414ca33d895",
+        "max": 1.0,
+        "readout": false,
+        "step": 0.01,
+        "style": "IPY_MODEL_989529fc99894b9d93f1bf3a60500de7",
+        "value": 1.0
+      }
+    },
+    "93a183e04bfe499abdc32fa0572fca5e": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "height": "25px",
+        "padding": "0px 0px 0px 0px",
+        "width": "25px"
+      }
+    },
+    "eb60a207cb704c26accb1a4df1083a4c": {
+      "model_name": "ButtonStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "33a840dadfb647cea137f8aa6f82b0c7": {
+      "model_name": "ButtonModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "icon": "gear",
+        "layout": "IPY_MODEL_93a183e04bfe499abdc32fa0572fca5e",
+        "style": "IPY_MODEL_eb60a207cb704c26accb1a4df1083a4c",
+        "tooltip": "PU Units (CVR)"
+      }
+    },
+    "e5b294a0856149d7ad3b7b137f178b2b": {
+      "model_name": "LinkModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "source": [
+          "IPY_MODEL_8b78f183816c468187f0cd0a55450ba3",
+          "value"
+        ],
+        "target": [
+          "IPY_MODEL_1bff01f13dfa4cc0a492e8f553464c54",
+          "visible"
+        ]
+      }
+    },
+    "745b893b1dc24399b470bf344e2250bd": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "padding": "0px 8px 0px 8px"
+      }
+    },
+    "70d3ae6935ee47328ea0f341ddb8bc06": {
+      "model_name": "HBoxModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "children": [
+          "IPY_MODEL_8b78f183816c468187f0cd0a55450ba3",
+          "IPY_MODEL_33a840dadfb647cea137f8aa6f82b0c7",
+          "IPY_MODEL_58453c83c3dc4a4bb9736bab62ffd473"
+        ],
+        "layout": "IPY_MODEL_745b893b1dc24399b470bf344e2250bd"
+      }
+    },
+    "307f27058ac044f3a2fa77d0420a3d8c": {
+      "model_name": "LeafletLayersControlModel",
+      "model_module": "jupyter-leaflet",
+      "model_module_version": "^0.20",
+      "state": {
+        "options": [
+          "collapsed",
+          "position"
+        ],
+        "position": "topright"
+      }
+    },
+    "cd962ef985924e47a7edf2877c064db4": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "height": "28px",
+        "padding": "0px 0px 0px 4px",
+        "width": "28px"
+      }
+    },
+    "f4c59f1ae0ac4baea849a639b6d37d11": {
+      "model_name": "ToggleButtonStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "70a12076598f4fae92873b7c778eb6c6": {
+      "model_name": "ToggleButtonModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "icon": "server",
+        "layout": "IPY_MODEL_cd962ef985924e47a7edf2877c064db4",
+        "style": "IPY_MODEL_f4c59f1ae0ac4baea849a639b6d37d11",
+        "tooltip": "Layer Manager",
+        "value": true
+      }
+    },
+    "96cbaf5afbbf445b97efb0da0a128c3e": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "height": "28px",
+        "padding": "0px 0px 0px 4px",
+        "width": "28px"
+      }
+    },
+    "66b4ab19166b4cb5bb707154f5ac8808": {
+      "model_name": "ToggleButtonStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "1dfb80afd24b45bf9e250dfa95981dd8": {
+      "model_name": "ToggleButtonModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "button_style": "primary",
+        "icon": "times",
+        "layout": "IPY_MODEL_96cbaf5afbbf445b97efb0da0a128c3e",
+        "style": "IPY_MODEL_66b4ab19166b4cb5bb707154f5ac8808",
+        "tooltip": "Close the tool"
+      }
+    },
+    "516502bc6ccd41a3a83b485837ca70b6": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "f17d9b397eec48298e69ca8329a2847b": {
+      "model_name": "HBoxModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "children": [
+          "IPY_MODEL_1dfb80afd24b45bf9e250dfa95981dd8",
+          "IPY_MODEL_70a12076598f4fae92873b7c778eb6c6"
+        ],
+        "layout": "IPY_MODEL_516502bc6ccd41a3a83b485837ca70b6"
+      }
+    },
+    "a1ed0890b9514451b7106c6ece7f38ee": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "fd3a1ba35aa84485a5c5d3a0cc7cc389": {
+      "model_name": "VBoxModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "children": [
+          "IPY_MODEL_8ee343820de042d28a557773ce1cd4d4",
+          "IPY_MODEL_f1d0177bb66f4267b1e83d6e569360ff",
+          "IPY_MODEL_11fb212403864844b5ebc075d16c09ce"
+        ],
+        "layout": "IPY_MODEL_a1ed0890b9514451b7106c6ece7f38ee"
+      }
+    },
+    "d4883ec0ca074b5794724a6799928961": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "4db6d587567b4f80bd597ec66fd4f0f5": {
+      "model_name": "VBoxModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "children": [
+          "IPY_MODEL_f17d9b397eec48298e69ca8329a2847b",
+          "IPY_MODEL_fd3a1ba35aa84485a5c5d3a0cc7cc389"
+        ],
+        "layout": "IPY_MODEL_d4883ec0ca074b5794724a6799928961"
+      }
+    },
+    "952279a30fea43cab582d8f14283a688": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "height": "18px",
+        "padding": "0px 8px 25px 8px",
+        "width": "30ex"
+      }
+    },
+    "db153c9f17864e43a6e1ce44d8bb0715": {
+      "model_name": "CheckboxStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "8ee343820de042d28a557773ce1cd4d4": {
+      "model_name": "CheckboxModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "description": "All layers on/off",
+        "indent": false,
+        "layout": "IPY_MODEL_952279a30fea43cab582d8f14283a688",
+        "style": "IPY_MODEL_db153c9f17864e43a6e1ce44d8bb0715"
+      }
+    },
+    "d40f90534e09465c8dad3f2d8a5a9a3d": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "height": "18px",
+        "width": "25ex"
+      }
+    },
+    "9091eeedd0d64cd4b6e257078551957b": {
+      "model_name": "CheckboxStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "0594157e19284efaa1bc2d856b1bec06": {
+      "model_name": "CheckboxModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "description": "OpenStreetMap",
+        "indent": false,
+        "layout": "IPY_MODEL_d40f90534e09465c8dad3f2d8a5a9a3d",
+        "style": "IPY_MODEL_9091eeedd0d64cd4b6e257078551957b",
+        "value": true
+      }
+    },
+    "1e3c5f7e07fe41e4b12b68517ffb07b2": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "width": "80px"
+      }
+    },
+    "676f05cf5e274973925a2405e02617dd": {
+      "model_name": "SliderStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "3b6426490f574d71b9791481c6f8a67a": {
+      "model_name": "FloatSliderModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "layout": "IPY_MODEL_1e3c5f7e07fe41e4b12b68517ffb07b2",
+        "max": 1.0,
+        "readout": false,
+        "step": 0.01,
+        "style": "IPY_MODEL_676f05cf5e274973925a2405e02617dd",
+        "value": 1.0
+      }
+    },
+    "adbd55c4324046c2bfe88f9546f194ff": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "height": "25px",
+        "padding": "0px 0px 0px 0px",
+        "width": "25px"
+      }
+    },
+    "af8486ae61cb473aa3bc7e6971f81101": {
+      "model_name": "ButtonStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "a9965826041840ca91915a3a00b57886": {
+      "model_name": "ButtonModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "icon": "gear",
+        "layout": "IPY_MODEL_adbd55c4324046c2bfe88f9546f194ff",
+        "style": "IPY_MODEL_af8486ae61cb473aa3bc7e6971f81101",
+        "tooltip": "OpenStreetMap"
+      }
+    },
+    "820c947845ea4a86973e3addc4a4b39b": {
+      "model_name": "LinkModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "source": [
+          "IPY_MODEL_0594157e19284efaa1bc2d856b1bec06",
+          "value"
+        ],
+        "target": [
+          "IPY_MODEL_c00ba5581fd64e7282244216a5bb5172",
+          "visible"
+        ]
+      }
+    },
+    "fa8a4ae01fa1490b8c6763afa1a2da59": {
+      "model_name": "DirectionalLinkModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "source": [
+          "IPY_MODEL_3b6426490f574d71b9791481c6f8a67a",
+          "value"
+        ],
+        "target": [
+          "IPY_MODEL_c00ba5581fd64e7282244216a5bb5172",
+          "opacity"
+        ]
+      }
+    },
+    "22f28bed805448ada283ba977a6b573f": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "padding": "0px 8px 0px 8px"
+      }
+    },
+    "f1d0177bb66f4267b1e83d6e569360ff": {
+      "model_name": "HBoxModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "children": [
+          "IPY_MODEL_0594157e19284efaa1bc2d856b1bec06",
+          "IPY_MODEL_a9965826041840ca91915a3a00b57886",
+          "IPY_MODEL_3b6426490f574d71b9791481c6f8a67a"
+        ],
+        "layout": "IPY_MODEL_22f28bed805448ada283ba977a6b573f"
+      }
+    },
+    "126b208ff8c1462a82024d9cb85f93e4": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "height": "18px",
+        "width": "25ex"
+      }
+    },
+    "486096b72b2a4e259696d1b757594038": {
+      "model_name": "CheckboxStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "534ada2a312b4dad96b7dc80cf40393c": {
+      "model_name": "CheckboxModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "description": "PU Units (CVR)",
+        "indent": false,
+        "layout": "IPY_MODEL_126b208ff8c1462a82024d9cb85f93e4",
+        "style": "IPY_MODEL_486096b72b2a4e259696d1b757594038",
+        "value": true
+      }
+    },
+    "79ec17a441834b25976d35e27f1d9d5c": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "width": "80px"
+      }
+    },
+    "088deeded71b4a4fb68a83a36cb503f0": {
+      "model_name": "SliderStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "86b9042f9a4143ae86759302bb658230": {
+      "model_name": "FloatSliderModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "layout": "IPY_MODEL_79ec17a441834b25976d35e27f1d9d5c",
+        "max": 1.0,
+        "readout": false,
+        "step": 0.01,
+        "style": "IPY_MODEL_088deeded71b4a4fb68a83a36cb503f0",
+        "value": 1.0
+      }
+    },
+    "617926883a5344b3bf22a3632a524881": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "height": "25px",
+        "padding": "0px 0px 0px 0px",
+        "width": "25px"
+      }
+    },
+    "be7b49e64db044c3a749e8249722b6fe": {
+      "model_name": "ButtonStyleModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {}
+    },
+    "e02660e18675412ea6d4d917455034ed": {
+      "model_name": "ButtonModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "icon": "gear",
+        "layout": "IPY_MODEL_617926883a5344b3bf22a3632a524881",
+        "style": "IPY_MODEL_be7b49e64db044c3a749e8249722b6fe",
+        "tooltip": "PU Units (CVR)"
+      }
+    },
+    "9319f611cacc4a838d92632a455fac47": {
+      "model_name": "LinkModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "source": [
+          "IPY_MODEL_534ada2a312b4dad96b7dc80cf40393c",
+          "value"
+        ],
+        "target": [
+          "IPY_MODEL_1bff01f13dfa4cc0a492e8f553464c54",
+          "visible"
+        ]
+      }
+    },
+    "12bb301e29f945fcad658cb30831d7a2": {
+      "model_name": "LayoutModel",
+      "model_module": "@jupyter-widgets/base",
+      "model_module_version": "2.0.0",
+      "state": {
+        "padding": "0px 8px 0px 8px"
+      }
+    },
+    "11fb212403864844b5ebc075d16c09ce": {
+      "model_name": "HBoxModel",
+      "model_module": "@jupyter-widgets/controls",
+      "model_module_version": "2.0.0",
+      "state": {
+        "_dom_classes": [],
+        "children": [
+          "IPY_MODEL_534ada2a312b4dad96b7dc80cf40393c",
+          "IPY_MODEL_e02660e18675412ea6d4d917455034ed",
+          "IPY_MODEL_86b9042f9a4143ae86759302bb658230"
+        ],
+        "layout": "IPY_MODEL_12bb301e29f945fcad658cb30831d7a2"
+      }
+    }
+  }
+}
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"version_major": 2, "version_minor": 0, "model_id": "56bd22bf1c2f42718b538d8a22baeca5"}
+</script>
+
+</body>
+</html>

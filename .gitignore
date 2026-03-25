@@ -6,3 +6,6 @@
 # Backups & System Files
 /.git_backup/
 .DS_Store
+
+# cvr data
+/data/raw/cvr_raw

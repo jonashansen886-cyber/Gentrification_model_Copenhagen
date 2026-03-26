@@ -9,7 +9,5 @@
 
 # cvr data (large JSON files exceed GitHub's 100 MB limit)
 /data/raw/cvr_raw/
-/data/processed/cvr/cvr_joined.json
-/data/processed/cvr/cvr_cph_addresses_names.json
-/data/processed/cvr/cvr_cph_addresses.json
-/data/processed/cvr/cvr_cph_joined_manual.json
+/data/processed/cvr/
+/data/processed/temporal_join_cph.json

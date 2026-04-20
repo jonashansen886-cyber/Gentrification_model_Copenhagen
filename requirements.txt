@@ -21,4 +21,10 @@ rasterstats>=0.19.0
 requests
 aiohttp
 torch>=2.0.0
+tqdm>=4.65.0
+xarray>=2023.0.0
+tslearn>=0.6.3
 pyarrow>=14.0.0
+libpysal>=4.8.0
+pointpats>=2.4.0
+scipy>=1.10.0

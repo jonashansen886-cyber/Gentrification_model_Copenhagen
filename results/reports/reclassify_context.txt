@@ -1,0 +1,44 @@
+# Reclassification Reasoning and Context
+
+This document outlines the reasoning used to reclassify Time Series Clusters (TSC) into gentrification levels (1-6). 
+
+## Classification Scale
+- **1: High Gentrification**: Strong positive trends in socioeconomic status, rapid influx of gentrifiers, or significant displacement of original lower-income populations.
+- **3: Neutral / No Trend**: The cluster follows national averages or shows no significant change over the period.
+- **6: Not Gentrifying**: Indicators opposing gentrification (e.g., increasing unemployment, decreasing education levels, or areas remaining stable low-income without investment).
+
+## Variable Logic
+The reclassification algorithm evaluates each cluster based on its **mean level** (status) and **slope** (trend). The "direction" indicates whether a higher value (+1) or lower value (-1) correlates with gentrification.
+
+### Demographic Variables
+- **age_18_25 (Direction: -1)**: Decreasing proportions often signify the displacement of students or young adults as area prices rise.
+- **age_26_40 (Direction: +1)**: The "gentrifier" age group; influx of young professionals is a primary marker.
+- **age_41_55 (Direction: +1)**: Correlates with established professionals and families with high purchasing power moving into matured gentrified areas.
+- **age_56_69 (Direction: -1)**: Decreasing proportions indicate displacement of older, potentially lower-income long-term residents.
+- **EMUB (Single Men without Children) (Direction: +1)**: Singles often lead early-stage gentrification.
+- **PMB (Couples with Children) (Direction: -1)**: Often shows a relative decrease in early stages as the area becomes dominated by singles/childless couples.
+- **PUB (Couples without Children) (Direction: +1)**: Typical demographic for urban gentrifiers.
+
+### Economic Variables
+- **disp_inc (Disposable Income) (Direction: +1)**: Strongest indicator; rising income levels directly track gentrification.
+- **unemp (Unemployment) (Direction: -1)**: Decreasing unemployment indicates an influx of workforce-active residents.
+- **emp (Employment) (Direction: +1)**: Increasing employment rates follow the transition to a professional-dominated population.
+- **ool (Outside Labor Market) (Direction: -1)**: A decrease signifies a move away from marginalized or retiree-heavy demographics.
+
+### Education Variables
+- **lvu (Higher Education) (Direction: +1)**: A key marker of the "creative class" and gentrifiers.
+- **grund (Primary School Only) (Direction: -1)**: Decrease indicates displacement of lower-skilled residents.
+- **gym_erhv (Vocational/Secondary) (Direction: -1)**: Often decreases relative to higher education degrees.
+
+### Housing and Crime
+- **mean_price / mean_sqm (Direction: +1)**: Rising property values are a fundamental driver and result of gentrification.
+- **public_housing (Direction: -1)**: A decrease in the share of social housing indicates privatization or "upgrading" of the neighborhood.
+- **crime_main_y (Direction: -1)**: Reduced crime rates are strongly correlated with urban revitalization and gentrification.
+
+### Migration
+- **mig_in (Direction: +1)**: High influx indicates the area is an attractive destination for new (wealthier) residents.
+- **mig_net (Direction: +1)**: Positive net migration during growth phases.
+- **mig_out (Direction: -1)**: High outflow can signify the displacement of the original population; stability (low rank) is associated with higher values in this classification.
+
+## Methodology
+The automated script calculates a normalized score for each cluster within a specific chart. Clusters are then ranked 1 through 6 based on this score, ensuring that the cluster with the strongest signs of gentrification (highest income, lowest unemployment, etc.) is always assigned Value 1.

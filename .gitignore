@@ -11,3 +11,6 @@
 /data/raw/cvr_raw/
 /data/processed/cvr/
 /data/processed/temporal_join_cph.json
+
+# csv files (large CSV files exceed GitHub's 100 MB limit)
+/data/raw/GT_V2_data_cph.csv

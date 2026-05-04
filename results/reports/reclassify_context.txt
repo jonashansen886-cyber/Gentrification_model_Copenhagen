@@ -42,3 +42,22 @@ The reclassification algorithm evaluates each cluster based on its **mean level*
 
 ## Methodology
 The automated script calculates a normalized score for each cluster within a specific chart. Clusters are then ranked 1 through 6 based on this score, ensuring that the cluster with the strongest signs of gentrification (highest income, lowest unemployment, etc.) is always assigned Value 1.
+
+The gentrification index for each cluster is computed as:
+
+    gent_index = (normalized_mean * 0.5 * direction) + (normalized_slope * 0.5 * direction)
+
+where `normalized_mean` and `normalized_slope` are min-max scaled within each chart. Mean and slope are weighted equally (50/50). The final rank is linearly mapped from the sorted index onto the 1–6 scale.
+
+## TSC Structure
+Time Series Clustering is run **per 5-year interval** (not over the full 30-year period). This produces 6 period-specific `.gpkg` files and HTML charts per variable:
+- 1990–1995, 1995–2000, 2000–2005, 2005–2010, 2010–2015, 2015–2020
+
+Total: 21 variables × 6 periods = 126 charts and GeoPackages. Each chart is reclassified independently, so cluster assignments are not comparable across periods — only the gentrification rank (1–6) is.
+
+Source GeoPackages: `data/processed/tsc_netcdf_vector/{var}_{start}_{end}_tsc.gpkg`
+Source charts: `results/metrics/charts_html/{var}_{start}_{end}_tsc_timeseries.html`
+Output: `results/reports/reclassified.txt`
+
+## Maintenance Log
+- **May 2026**: TSC re-run after fix for GeoPackage FID conflict (shapefile `fid` column clashed with GPKG auto-FID, causing 138 empty output files). All 138 period-specific GeoPackages regenerated. `reclassified.txt` regenerated via `py_programs/reclassify_charts.py`.

@@ -45,15 +45,16 @@ notebooks/                    — analysis notebooks (run top-to-bottom)
 | 03 | `03_weighted_overlay_analysis.ipynb` | Computes weighted overlay, runs zonal statistics on clusters, and builds an interactive map; outputs to `results/metrics/overlay_output`. |
 | 04 | `04_raster_data_cleaning.ipynb` | Prepares and cleans data including raster-derived features. |
 | 05 | `05_XGBoost_model.ipynb` | XGBoost classification with stratified splits, `RandomizedSearchCV` hyperparameter tuning, threshold tuning for class 0, and prediction/probability export (`predictions_cph.csv`, `xgb_proba_cph.csv`). |
-| 06 | `06_visualixe_XGBoost_training_data.ipynb` | Visualizes XGBoost predictions over Copenhagen neighborhoods; saves `results/figures/prediction_map.html`. |
-| 07 | `07_visualize_XGBoost_fingerplan.ipynb` | Visualizes XGBoost fingerplan predictions over the fingerplan shapefile; saves `results/figures/fingerplan_predict_map.html`. |
-| 08 | `08_cvr_adresse_API.ipynb` | Queries `cvrapi.dk` and the DAWA geocoding API to enrich CVR business records with coordinates; saves progress to `data/interim/cvr_pipeline_checkpoint.json` for resumable runs (rate limit: ~100–200 requests/day). |
-| 09 | `09_manual_cvr_data_pross_current.ipynb` | Processes current-snapshot CVR JSON exports from `data/raw/cvr_raw/cvr_current/`, filters to Copenhagen (kommunekode 101), and joins address/name/industry tables into a master dataset. |
-| 10 | `10_manual_cvr_data_pross_temporal.ipynb` | Mirrors notebook 09 for temporal CVR JSON files (`data/raw/cvr_raw/cvr_temporal/`); uses streaming (`ijson`) to handle large (~10 GB) address files. |
-| 11 | `11_proccecing_gentrified_industries.ipynb` | Filters CVR businesses to gentrification-associated industry codes and renders an interactive Folium timeline map of openings/closings (2000–2026). |
-| 12 | `12_Point_Pattern_Analysis.ipynb` | Applies quadrat statistics and distance functions (`libpysal`/`pointpats`) to CVR business locations to evaluate spatial clustering of gentrification-associated businesses over time. |
-| 13 | `13_LSTM_model.ipynb` | Builds a PyTorch LSTM classifier; spatially joins CVR business points to neighborhood clusters, aggregates DB25 industry counts per 5-year window (6 time steps, 1990–2020), trains a sequence model, and saves the model to `results/models/lstm_gentrification.pt` and probabilities to `results/models/lstm_proba_cph.csv`. |
-| 14 | `14_ensemble_model.ipynb` | Combines XGBoost (CV macro-F1 ≈ 0.727) and LSTM (CV macro-F1 ≈ 0.523) via hard and soft voting using pre-saved probability CSVs; analyzes error overlap and saves final ensemble predictions to `results/models/ensemble_predictions.csv`. |
+| 06 | `06_cvr_adresse_API.ipynb` | Queries `cvrapi.dk` and the DAWA geocoding API to enrich CVR business records with coordinates; saves progress to `data/interim/cvr_pipeline_checkpoint.json` for resumable runs (rate limit: ~100–200 requests/day). |
+| 07 | `07_manual_cvr_data_pross_current.ipynb` | Processes current-snapshot CVR JSON exports from `data/raw/cvr_raw/cvr_current/`, filters to Copenhagen (kommunekode 101), and joins address/name/industry tables into a master dataset. |
+| 08 | `08_manual_cvr_data_pross_temporal.ipynb` | Mirrors notebook 07 for temporal CVR JSON files (`data/raw/cvr_raw/cvr_temporal/`); uses streaming (`ijson`) to handle large (~10 GB) address files. |
+| 09 | `09_proccecing_gentrified_industries.ipynb` | Filters CVR businesses to gentrification-associated industry codes and renders an interactive Folium timeline map of openings/closings (2000–2026). |
+| 10 | `10_LSTM_model.ipynb` | Builds a PyTorch LSTM classifier; spatially joins CVR business points to neighborhood clusters, aggregates DB25 industry counts per 5-year window (6 time steps, 1990–2020), trains a sequence model, and saves the model to `results/models/lstm_gentrification.pt` and probabilities to `results/models/lstm_proba_cph.csv`. |
+| 11 | `11_ensemble_model.ipynb` | Combines XGBoost (CV macro-F1 ≈ 0.727) and LSTM (CV macro-F1 ≈ 0.523) via hard and soft voting using pre-saved probability CSVs; analyzes error overlap and saves final ensemble predictions to `results/models/ensemble_predictions.csv`. |
+| — | `MAPS/xgboost_prediction_maps.ipynb` | Visualizes XGBoost predictions over Copenhagen neighborhoods and the fingerplan shapefile; saves interactive HTML maps to `results/figures/`. |
+| — | `MAPS/lstm_prediction_map.ipynb` | Visualizes LSTM predictions over Copenhagen neighborhoods; saves interactive HTML map to `results/figures/`. |
+| — | `MAPS/ensemble_prediction_maps.ipynb` | Visualizes ensemble predictions over Copenhagen neighborhoods; saves interactive HTML map to `results/figures/`. |
+| — | `MAPS/combined_prediction_map.ipynb` | Interactive choropleth combining all model predictions (XGBoost, LSTM, Hard/Soft Ensemble) across years (2020–2035) with toggle controls; saves `results/figures/ensemble_map_combined.html`. |
 | — | `OLD_notebooks/` | Legacy experiments for reference only. |
 
 ## `py_programs/` Scripts

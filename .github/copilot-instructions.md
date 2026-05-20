@@ -6,14 +6,21 @@ These instructions guide AI coding agents to be productive in this workspace. Fo
 - **Workspace structure:**
   - `data/` with `raw/`, `interim/`, `processed/`: store datasets across lifecycle stages. Agents should not hardcode external paths; prefer using files in `data/`.
   - `notebooks/`: primary analysis in Jupyter notebooks. Key notebooks:
-    - `01_visualize_timeseries_clustering.ipynb`: visualize ArcGIS Time Series Clustering DBF charts and export HTML charts to `results/metrics/charts_html`.
-    - `02_TSC_rasterize_reclassify.ipynb`: rasterize TSC clusters and apply Excel-based reclassification rules; outputs to `data/processed/tsc_reclass`.
+    - `00_space_time_cube_processing.ipynb`: K-NN spatial imputation across three 10-year intervals; writes NetCDF space-time cubes to `data/processed/NetCDF_cubes`.
+    - `01_timeseries_visualization.ipynb`: visualize ArcGIS Time Series Clustering DBF charts and export HTML charts to `results/metrics/charts_html`.
+    - `02_rasterize_reclassify.ipynb`: rasterize TSC clusters and apply Excel-based reclassification rules; outputs to `data/processed/tsc_reclass`.
     - `03_weighted_overlay_analysis.ipynb`: compute weighted overlay, run zonal statistics on clusters, and build an interactive map; outputs to `results/metrics/overlay_output`.
-    - `04_raster_data_cleaning.ipynb`: data preparation and cleaning (including raster-derived features).
-    - `05_machine_learning_Model.ipynb`: XGBoost classification with stratified splits, hyperparameter tuning, threshold tuning for class 0, and predictions export.
-    - `06_visualixe_model_training_data.ipynb`: core model visualization over neighborhoods.
-    - `07_visualize_model_fingerplan.ipynb`: fingerplan visualization map using Leafmap.
-    - `OLD_*` notebooks: legacy experiments; use for reference, not extension.
+    - `04_ground_truth_classification.ipynb`: data preparation, cleaning, and ground-truth label assignment (raster-derived features).
+    - `05_XGBoost_model.ipynb`: XGBoost classification with stratified splits, hyperparameter tuning, threshold tuning for class 0, and predictions/probability export.
+    - `06_cvr_data_pross_temporal.ipynb`: processes temporal CVR JSON files; uses streaming (`ijson`) for large address files.
+    - `07_proccecing_gentrified_industries.ipynb`: filters CVR businesses to gentrification-associated industry codes; renders interactive Folium timeline map (2000–2026).
+    - `08_LSTM_model.ipynb`: PyTorch LSTM classifier on CVR business-composition sequences (6 time steps, 1990–2020); saves model and probabilities.
+    - `09_ensemble_model.ipynb`: combines XGBoost and LSTM via hard/soft voting; error-overlap analysis, threshold sweep, future drift projections (2025/2030/2035).
+    - `MAPS/xgboost_prediction_maps.ipynb`: XGBoost prediction maps for Copenhagen and fingerplan area; saves HTML to `results/figures/`.
+    - `MAPS/lstm_prediction_map.ipynb`: LSTM prediction map for Copenhagen; saves HTML to `results/figures/`.
+    - `MAPS/ensemble_prediction_maps.ipynb`: ensemble prediction maps for Copenhagen; saves HTML to `results/figures/`.
+    - `MAPS/combined_prediction_map.ipynb`: combined choropleth for all models across 2020–2035 with toggle controls; saves `results/figures/ensemble_map_combined.html`.
+    - `OLD_notebooks/`: legacy experiments; use for reference, not extension.
   - `py_programs/`: placeholder for reusable Python scripts/functions. Prefer extracting shared logic here.
 - **Data flow:** Clean data is produced in `04_...` and consumed by the ML model in `05_...`. Keep inputs/outputs versioned under `data/processed/` to make runs reproducible.
  - **Spatial augmentation:** Use `py_programs/augment_with_geo.py` to merge centroid coordinates from the shapefile into the primary CSV, producing `data/processed/GT_V1_data_cph_geo.csv` for spatial analysis.
@@ -22,7 +29,7 @@ These instructions guide AI coding agents to be productive in this workspace. Fo
 
 ## Environment & Dependencies
 - **Python version:** Use Python 3.9+ unless the user specifies otherwise.
-- **Core libs:** `pandas`, `numpy`, `matplotlib`, `scikit-learn`, `xgboost`.
+- **Core libs:** `pandas`, `numpy`, `matplotlib`, `scikit-learn`, `xgboost`, `torch`, `geopandas`, `folium`, `leafmap`, `ijson`.
 - **Install deps:** When adding code, include a minimal `requirements.txt` update if new packages are necessary.
 - **Notebook kernels:** Ensure the active kernel has required packages before executing cells.
 - **Virtual envs:** Do not commit the local venv. Recreate via `requirements.txt`; add `.venv/` to `.gitignore`.
@@ -35,6 +42,9 @@ These instructions guide AI coding agents to be productive in this workspace. Fo
  - **Tuning:** Hyperparameter search via `RandomizedSearchCV` with `cv=10`, `n_iter=100`, `scoring='accuracy'`, `n_jobs=-1`, `random_state=42`.
  - **Threshold tuning (Notebook 05):** Select the class-0 probability via `best_model.classes_`, binarize labels (`y == 0`), sweep thresholds to prioritize recall for class 0 (tie-breaker F1), and use the tuned threshold `best_t` for downstream predictions (predict 0 if `P(class0) >= best_t`, else `argmax`).
 - **Feature importance:** Plot using `best_model.feature_importances_` and `matplotlib` after sorting indices.
+- **LSTM modeling (Notebook 08):** PyTorch LSTM on 6 time-step CVR DB25 industry-count sequences per cluster. Save model weights to `results/models/lstm_gentrification.pt` and probabilities to `results/models/lstm_proba_cph.csv`.
+- **Ensemble (Notebook 09):** Combine XGBoost and LSTM via hard/soft voting from pre-saved probability CSVs. Soft weights proportional to CV macro-F1 scores. Tune soft-vote threshold on validation set. Save predictions to `results/models/ensemble_predictions.csv`.
+- **Future projections (Notebook 09):** Apply probability-drift to 2020 baseline: `p1(t) = 1 - (1 - p1_2020) * δ^(t/5)` with `δ=0.95`. Save per-horizon CSVs as `results/models/ensemble_future_{year}.csv`.
 - **Language:** Some comments are in Danish; preserve meaning when refactoring.
 - **Code layout:** Keep reusable logic in `py_programs/` for now. When it grows, consider a `src/` layout (e.g., `src/gentrification_model/`) with minimal packaging to enable consistent imports.
  - **Spatial joins:**
@@ -61,14 +71,21 @@ These instructions guide AI coding agents to be productive in this workspace. Fo
 
 ### Interactive mapping workflow
 - Core predictions output (Notebook 05): Save slim CSV to `results/models/predictions_cph.csv` with columns: `cluster_id`, `prediction`.
-- Neighborhood visualization (Notebook 06): Load `predictions_cph.csv` and the neighborhood shapefile, normalize join keys (`Cluster_id`/`cluster_id`), reproject to EPSG:4326, and build a Leafmap. Save `results/figures/prediction_map.html`.
 - Fingerplan predictions (Notebook 05): Save slim CSV to `results/models/finger_predictions.csv` with columns: `cluster_id`, `prediction`.
-- Fingerplan visualization (Notebook 07):
+- LSTM predictions (Notebook 08): Save slim CSV to `results/models/lstm_predictions.csv` with columns: `cluster_id`, `prediction`.
+- Ensemble predictions (Notebook 09): Save to `results/models/ensemble_predictions.csv` and per-horizon CSVs `ensemble_future_{year}.csv`.
+- **MAPS notebooks** (in `notebooks/MAPS/`):
+  - `xgboost_prediction_maps.ipynb`: XGBoost predictions for Copenhagen and fingerplan area → `results/figures/`.
+  - `lstm_prediction_map.ipynb`: LSTM predictions for Copenhagen → `results/figures/`.
+  - `ensemble_prediction_maps.ipynb`: Ensemble predictions for Copenhagen → `results/figures/`.
+  - `combined_prediction_map.ipynb`: All models across 2020–2035 with toggle controls → `results/figures/ensemble_map_combined.html`.
+- Neighborhood visualization: Load prediction CSV and shapefile, normalize join keys (`Cluster_id`/`cluster_id`), reproject to EPSG:4326, and build a Leafmap.
+- Fingerplan visualization:
   - Load `finger_predictions.csv` and shapefile `data/raw/fingerplanen_shapefile/GTD_clus_fingerplan_lessthan_50.shp`.
   - Prefer shapefile join key `munic_clus` (fallbacks: `cluster_id`, heuristic on columns containing 'munic'/'clus'/'cluster'). Align dtypes and strip leading zeros to avoid mismatches.
   - Reproject to EPSG:4326. Convert GeoDataFrame to GeoJSON using `gdf_merged.to_json()` (then `json.loads(...)`).
   - Use `leafmap.Map.add_geojson(..., style_function=...)` and cast `prediction` to int inside `style_function` for color mapping.
-  - Colors: Class 0 `#2ca02c`, Class 1 `#1f77b4`, Class 2 `#ff7f0e`, NoPrediction `#7f7f7f`. Save `results/figures/fingerplan_predict_map.html`.
+  - Colors: Class 0 `#2ca02c`, Class 1 `#1f77b4`, Class 2 `#ff7f0e`, NoPrediction `#7f7f7f`.
 
 ## External Data & Integration
 - **CSV inputs:** Prefer reading from `data/processed/` rather than external folders. If an external path is necessary, make it configurable via a variable at the top of the notebook/script.

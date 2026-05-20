@@ -82,9 +82,14 @@ notebooks/                    — analysis notebooks (run top-to-bottom)
 | `results/models/lstm_gentrification.pt` | Saved PyTorch LSTM model weights. |
 | `results/models/lstm_predictions.csv` | LSTM neighborhood predictions. |
 | `results/models/lstm_proba_cph.csv` | LSTM class probabilities for ensemble input. |
-| `results/models/ensemble_predictions.csv` | Final ensemble (XGBoost + LSTM) predictions. |
+| `results/models/ensemble_predictions.csv` | Final ensemble (XGBoost + LSTM) predictions for 2020 (`cluster_id`, `xgb_pred`, `lstm_pred`, `hard_pred`, `soft_pred`). |
+| `results/models/ensemble_future_2025.csv` | Ensemble drift-projected predictions for 2025 (`cluster_id`, `prediction`). |
+| `results/models/ensemble_future_2030.csv` | Ensemble drift-projected predictions for 2030 (`cluster_id`, `prediction`). |
+| `results/models/ensemble_future_2035.csv` | Ensemble drift-projected predictions for 2035 (`cluster_id`, `prediction`). |
 | `results/figures/prediction_map.html` | Interactive XGBoost neighborhood prediction map. |
 | `results/figures/fingerplan_predict_map.html` | Interactive fingerplan prediction map. |
+| `results/figures/ensemble_map_combined.html` | Combined interactive choropleth for all models across 2020–2035. |
+| `results/figures/ensemble_timeline.jpg` | Stacked bar chart of ensemble class distribution 2020–2035. |
 
 ## Conventions
 
@@ -158,7 +163,7 @@ jupyter notebook
 
 ## Typical Workflow
 
-1. Run notebooks in order (00 → 14), saving intermediate artifacts to `data/processed/`.
+1. Run notebooks in order (00 → 09), saving intermediate artifacts to `data/processed/`.
 2. Keep notebooks clean and deterministic; avoid absolute machine-specific paths.
 3. For the CVR pipeline (notebooks 08–12), the public `cvrapi.dk` API is rate-limited; use checkpoint files in `data/interim/` to resume across sessions.
 
